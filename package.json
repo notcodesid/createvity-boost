@@ -1,0 +1,16 @@
+{
+  "name": "createvity-boost",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Research-backed creativity OS + onchain ship receipts on Monad",
+  "scripts": {
+    "dev": "pnpm --filter @createvity/web dev",
+    "build": "pnpm --filter @createvity/web build",
+    "contracts:build": "pnpm --filter @createvity/contracts build",
+    "contracts:test": "pnpm --filter @createvity/contracts test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

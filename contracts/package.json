@@ -1,0 +1,10 @@
+{
+  "name": "@createvity/contracts",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "echo \"TODO: forge build / hardhat compile\"",
+    "test": "echo \"TODO: forge test / hardhat test\"",
+    "deploy": "echo \"TODO: deploy ShipReceipt to Monad\""
+  }
+}

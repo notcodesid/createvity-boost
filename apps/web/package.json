@@ -1,0 +1,10 @@
+{
+  "name": "@createvity/web",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "echo \"TODO: wire framework dev server\"",
+    "build": "echo \"TODO: wire framework build\"",
+    "start": "echo \"TODO: wire framework start\""
+  }
+}
