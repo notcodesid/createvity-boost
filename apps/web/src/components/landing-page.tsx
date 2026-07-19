@@ -67,39 +67,43 @@ export function LandingPage() {
       <section className="relative pt-20 pb-16 sm:pt-28 sm:pb-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
           {/* Monochromatic Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 px-3 py-1 text-xs font-medium text-zinc-400 mb-6">
-            <Zap className="h-3 w-3 text-zinc-400" />
-            <span>Built for Monad — 10k TPS, sub-second finality</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/80 bg-zinc-900/40 px-3.5 py-1 text-[13px] font-sans text-zinc-400 mb-6 hover:border-zinc-700/80 transition-colors cursor-pointer">
+            <span>Where your ideas become real</span>
+            <ArrowRight className="h-3 w-3 text-zinc-500" />
           </div>
 
-          {/* Heading */}
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.1] max-w-4xl mx-auto">
-            Diverge locally. <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-white via-zinc-300 to-zinc-600 bg-clip-text text-transparent">
-              Converge onchain.
-            </span>
+          {/* Heading in Hedvig Letters Serif */}
+          <h1 className="text-[44px] sm:text-[80px] font-serif font-normal tracking-tight text-white leading-[1.05] max-w-4xl mx-auto">
+            Write down your ideas. <br />
+            Make them real.
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            A research-backed OS for creative flow. Run walking protocols, SCAMPER brainstorming, and diverge/converge ideation. Record your work verifiably on Monad.
+          <p className="mt-8 text-[16px] sm:text-[18px] text-zinc-500 max-w-2xl mx-auto leading-relaxed font-sans">
+            A simple notepad for your brain. Jot down quick thoughts, use fun brainstorm exercises to grow them, and save them in a way that proves you came up with them first.
           </p>
 
-          {/* CTAs */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* CTA & Subtext - Square Corners (rounded-none) */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-3">
             <a
               href="/api/auth/google"
-              className="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-white px-6 text-sm font-semibold text-zinc-950 hover:bg-zinc-200 active:scale-[0.98] transition-all duration-200"
+              className="inline-flex h-12 items-center justify-center bg-white px-8 text-[14px] font-sans font-medium text-zinc-950 hover:bg-zinc-200 active:scale-[0.98] transition-all rounded-none duration-150"
             >
               Start Brainstorming
-              <ArrowRight className="h-4 w-4" />
             </a>
-            <a
-              href="#contract"
-              className="inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950 px-6 text-sm font-medium text-zinc-300 hover:bg-zinc-900 hover:text-zinc-100 hover:border-zinc-700 transition-all duration-200"
-            >
-              Verify Smart Contract
-            </a>
+            <span className="text-[11.5px] font-sans text-zinc-500 tracking-wide">
+              Free to use · Saves instantly
+            </span>
+          </div>
+
+          {/* Minimalist Logo Row */}
+          <div className="mt-14 flex items-center justify-center gap-10 opacity-20 grayscale pointer-events-none">
+            <TurbineIcon className="h-5 w-5 text-white" />
+            <Zap className="h-5 w-5 text-white" />
+            <ShieldCheck className="h-5 w-5 text-white" />
+            <Lightbulb className="h-5 w-5 text-white" />
+            <Footprints className="h-5 w-5 text-white" />
+            <Scale className="h-5 w-5 text-white" />
           </div>
 
           {/* Mockup Display with Monochromatic Glow */}
@@ -124,10 +128,10 @@ export function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              A workspace tuned for creative momentum.
+              A neat place to grow your thoughts.
             </h2>
             <p className="mt-4 text-zinc-400 text-sm sm:text-base leading-relaxed">
-              We separate idea generation from evaluation. Capture wild sparks offchain, process them locally, and sign only what matters.
+              Write down your raw thoughts instantly, make them better with fun exercises, and save only the ones you love.
             </p>
           </div>
 
@@ -138,9 +142,9 @@ export function LandingPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
                 <Lightbulb className="h-5 w-5" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Instant Capture Bar</h3>
+              <h3 className="text-xl font-semibold text-white">Quick Typing Bar</h3>
               <p className="mt-3 text-sm text-zinc-400 leading-relaxed max-w-md">
-                Fleeting thoughts evaporate in minutes. Type directly into the global capture input. Ideas are structured and saved instantly in a local offchain SQLite database, keeping your raw drafts 100% private.
+                Thoughts disappear fast. Type them in instantly to save them right away. Your drafts are kept completely private to you.
               </p>
             </div>
 
@@ -149,9 +153,9 @@ export function LandingPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
                 <Lock className="h-5 w-5" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Draft Privacy</h3>
+              <h3 className="text-xl font-semibold text-white">Total Privacy</h3>
               <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                Your brainstorms are your competitive advantage. Keep draft bodies, notes, and session logs offchain and protected. No public records until you decide to ship.
+                Your ideas belong to you. Your drafts, notes, and brainstorms are stored safely and privately. Nothing is shared with anyone else unless you want to.
               </p>
             </div>
 
@@ -160,9 +164,9 @@ export function LandingPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
                 <Footprints className="h-5 w-5" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Walk Protocol</h3>
+              <h3 className="text-xl font-semibold text-white">Brain-Walk Timer</h3>
               <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                Science shows walking boosts creative output by 60%. Trigger the built-in timer, leave the screen behind, and log your breakthroughs as soon as you step back inside the studio.
+                Walking makes your brain work 60% better. Start the timer, go for a quick walk, and write down your best thoughts when you return.
               </p>
             </div>
 
@@ -171,9 +175,9 @@ export function LandingPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
                 <Shuffle className="h-5 w-5" />
               </div>
-              <h3 className="text-xl font-semibold text-white">SCAMPER Framework</h3>
+              <h3 className="text-xl font-semibold text-white">Brainstorm Tricks</h3>
               <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                Stuck on a design? Apply the seven prompts: Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Rearrange. Spin out new iterations of your current ideas dynamically.
+                Stuck on an idea? Use simple word prompts to change, mix, or rearrange things. It’s like a puzzle helper for your thoughts.
               </p>
             </div>
 
@@ -182,9 +186,9 @@ export function LandingPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
                 <Scale className="h-5 w-5" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Converge & Prune</h3>
+              <h3 className="text-xl font-semibold text-white">Pick the Winners</h3>
               <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                Generation is easy; selection is hard. Enter Converge mode to grade, prioritize, and prune your ideas. Keep the viable gems, kill the distractions, and ship the winners.
+                {"It's"} easy to make up ideas, but hard to choose the best ones. Score and clean up your list to find the absolute best ones to build.
               </p>
             </div>
           </div>
@@ -198,26 +202,26 @@ export function LandingPage() {
             <div>
               <div className="inline-flex items-center gap-1.5 rounded-full bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-400 mb-6 border border-zinc-800">
                 <ShieldCheck className="h-3.5 w-3.5" />
-                <span>Onchain Receipts</span>
+                <span>Digital Stamp</span>
               </div>
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl leading-tight">
-                Verifiable proofs of work. Published on Monad.
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl leading-tight font-serif font-normal">
+                Prove it was your idea first.
               </h2>
-              <p className="mt-6 text-zinc-400 text-sm sm:text-base leading-relaxed">
-                When you ship, Createvity generates a client-side cryptographically secure content hash of your work (combining your local idea ID, title, and link). 
+              <p className="mt-6 text-zinc-400 text-sm sm:text-base leading-relaxed font-sans">
+                When you are ready, Createvity makes a unique digital code for your work (like a digital fingerprint of your title and link).
               </p>
-              <p className="mt-4 text-zinc-400 text-sm sm:text-base leading-relaxed">
-                By calling `ShipReceipt.ship()`, your wallet registers a public, timestamped, append-only receipt. Anyone can verify you held this exact content at this exact time, without revealing your private drafts.
+              <p className="mt-4 text-zinc-400 text-sm sm:text-base leading-relaxed font-sans">
+                This registers a public, timestamped digital receipt. Anyone can verify you had this exact idea at this exact time, without you ever having to show them your private notes.
               </p>
 
               <div className="mt-8 grid grid-cols-2 gap-6 border-t border-zinc-900/60 pt-8">
                 <div>
-                  <p className="text-2xl font-bold text-white">100%</p>
-                  <p className="mt-1 text-xs text-zinc-500">Draft Privacy Guarded</p>
+                  <p className="text-2xl font-bold text-white font-sans">100%</p>
+                  <p className="mt-1 text-xs text-zinc-500 font-sans">Draft Privacy Guarded</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-zinc-300">Keccak256</p>
-                  <p className="mt-1 text-xs text-zinc-500">Onchain Content Hashes</p>
+                  <p className="text-2xl font-bold text-zinc-300 font-sans">Unique</p>
+                  <p className="mt-1 text-xs text-zinc-500 font-sans">Digital Fingerprints</p>
                 </div>
               </div>
             </div>
@@ -231,42 +235,42 @@ export function LandingPage() {
               </div>
               
               <div className="border-b border-zinc-900 pb-3 mb-4">
-                <p className="text-zinc-500">{"// Cryptographic Content Hash Generation"}</p>
+                <p className="text-zinc-500">{"// Creating a unique fingerprint for your idea"}</p>
               </div>
 
-              <div className="space-y-4">
-                <div>
+              <div className="space-y-4 font-sans">
+                <div className="font-mono">
                   <p className="text-zinc-400">const ideaData = &#123;</p>
                   <p className="pl-4">id: <span className="text-zinc-300">&quot;idea_d8c973a2&quot;</span>,</p>
-                  <p className="pl-4">title: <span className="text-zinc-300">&quot;Decentralized Art Collective&quot;</span>,</p>
-                  <p className="pl-4">link: <span className="text-zinc-300">&quot;https://github.com/createvity&quot;</span></p>
+                  <p className="pl-4">title: <span className="text-zinc-300">&quot;New Art Idea&quot;</span>,</p>
+                  <p className="pl-4">link: <span className="text-zinc-300">&quot;https://mywork.com&quot;</span></p>
                   <p className="text-zinc-400">&#125;;</p>
                 </div>
 
-                <div>
-                  <p className="text-zinc-500">{"// Compute fingerprint locally (in browser)"}</p>
+                <div className="font-mono">
+                  <p className="text-zinc-500">{"// Compute fingerprint locally"}</p>
                   <p className="text-zinc-400">
-                    const contentHash = keccak256(
+                    const fingerprint = hash(
                   </p>
                   <p className="pl-4 text-zinc-300">
-                    encodePacked(ideaData.id, ideaData.title, ideaData.link)
+                    ideaData.id + ideaData.title + ideaData.link
                   </p>
                   <p className="text-zinc-400">);</p>
                 </div>
 
-                <div className="bg-zinc-900/60 p-3 rounded-lg border border-zinc-800/80">
-                  <p className="text-zinc-500">{"// Resulting Hash submitted to Monad:"}</p>
+                <div className="bg-zinc-900/60 p-3 rounded-lg border border-zinc-800/80 font-mono">
+                  <p className="text-zinc-500">{"// Resulting Unique Fingerprint:"}</p>
                   <p className="text-zinc-200 mt-1 break-all select-all selection:bg-zinc-800">
                     0x937f2e86d26c59b207559195b058097b6ec34d284a14b9a3f2d655f47514f9g8
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 text-[10px] text-zinc-400 bg-zinc-900/20 border border-zinc-800/50 p-2 rounded-lg">
+                <div className="flex items-center gap-2 text-[10px] text-zinc-400 bg-zinc-900/20 border border-zinc-800/50 p-2 rounded-lg font-sans">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-500 opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-500" />
                   </span>
-                  <span>Transaction Successful on Monad Testnet</span>
+                  <span>Saved successfully</span>
                 </div>
               </div>
             </div>
@@ -282,13 +286,13 @@ export function LandingPage() {
             
             <div className="space-y-3">
               <span className="inline-block badge bg-zinc-900 text-zinc-400 border border-zinc-800 font-sans">
-                Monad Testnet Deployment
+                Secure Registry
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                ShipReceipt Contract
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-serif font-normal">
+                Verified Registry
               </h2>
-              <p className="text-sm text-zinc-400 max-w-xl leading-relaxed">
-                An append-only smart registry deployed on Monad. You can interact with the verified code directly or inspect existing creativity receipts on the block explorer.
+              <p className="text-sm text-zinc-400 max-w-xl leading-relaxed font-sans">
+                A secure public registry. You can inspect the code directly or view existing receipts on the block explorer.
               </p>
               
               {/* Address display */}
@@ -299,7 +303,7 @@ export function LandingPage() {
                     type="button"
                     onClick={handleCopy}
                     className="text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none cursor-pointer"
-                    title="Copy Contract Address"
+                    title="Copy Address"
                   >
                     {copied ? (
                       <Check className="h-4 w-4 text-white animate-scale" />
@@ -318,7 +322,7 @@ export function LandingPage() {
                 rel="noreferrer"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-300 px-6 text-sm font-semibold transition-all duration-200"
               >
-                <span>MonadVision Explorer</span>
+                <span>View Explorer</span>
                 <ExternalLink className="h-4 w-4" />
               </a>
             </div>
