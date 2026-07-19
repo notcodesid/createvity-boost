@@ -1,32 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { 
   ArrowRight, 
-  Check, 
-  Copy, 
-  ExternalLink, 
   Footprints, 
   Lightbulb, 
   Scale, 
-  Shuffle, 
   ShieldCheck,
-  Zap,
-  Lock
+  Zap
 } from "lucide-react";
 
 export function LandingPage() {
-  const [copied, setCopied] = useState(false);
-
-  const contractAddress = "0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E";
-
-  function handleCopy() {
-    void navigator.clipboard.writeText(contractAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }
-
   return (
     <div className="min-h-screen bg-[#030303] text-zinc-100 selection:bg-zinc-800 selection:text-white font-sans antialiased overflow-x-hidden">
       {/* Grid Pattern Background */}
@@ -127,220 +111,95 @@ export function LandingPage() {
       <section id="features" className="py-20 border-t border-zinc-900 bg-zinc-950/20 relative">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              A neat place to grow your thoughts.
+            <span className="text-[13px] font-sans font-medium text-zinc-500 uppercase tracking-widest block mb-3">
+              How it works
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-white leading-tight">
+              Write ideas. Improve them. Share when done.
             </h2>
-            <p className="mt-4 text-zinc-400 text-sm sm:text-base leading-relaxed">
-              Write down your raw thoughts instantly, make them better with fun exercises, and save only the ones you love.
+            <p className="mt-4 text-zinc-500 text-sm sm:text-base leading-relaxed font-sans max-w-2xl mx-auto">
+              A simple path from a messy thought to finished work — without losing ideas or sharing private notes.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Bento Block 1: Capture Bar */}
-            <div className="md:col-span-2 rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 hover:border-zinc-800/80 transition-all duration-300 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-40 w-40 bg-zinc-800/5 rounded-full blur-3xl pointer-events-none group-hover:bg-zinc-800/10 transition-all duration-500" />
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
-                <Lightbulb className="h-5 w-5" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">Quick Typing Bar</h3>
-              <p className="mt-3 text-sm text-zinc-400 leading-relaxed max-w-md">
-                Thoughts disappear fast. Type them in instantly to save them right away. Your drafts are kept completely private to you.
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {/* Bento Block 1: Capture */}
+            <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
+              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">01. Capture</span>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Write it down</h3>
+              <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
+                Type a short title and any notes. Ideas save to your account so you don’t forget them.
               </p>
             </div>
 
-            {/* Bento Block 2: Privacy */}
-            <div className="rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 hover:border-zinc-800/80 transition-all duration-300 relative overflow-hidden group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
-                <Lock className="h-5 w-5" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">Total Privacy</h3>
-              <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                Your ideas belong to you. Your drafts, notes, and brainstorms are stored safely and privately. Nothing is shared with anyone else unless you want to.
+            {/* Bento Block 2: Diverge */}
+            <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
+              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">02. Make more</span>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Add freely</h3>
+              <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
+                Keep adding ideas without judging. No deleting or picking winners yet — just get thoughts out.
               </p>
             </div>
 
-            {/* Bento Block 3: Walk Protocol */}
-            <div className="rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 hover:border-zinc-800/80 transition-all duration-300 relative overflow-hidden group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
-                <Footprints className="h-5 w-5" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">Brain-Walk Timer</h3>
-              <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                Walking makes your brain work 60% better. Start the timer, go for a quick walk, and write down your best thoughts when you return.
+            {/* Bento Block 3: Walk */}
+            <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
+              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">03. Walk</span>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Take a walk</h3>
+              <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
+                Start a timer, put the phone down, walk around. When you’re back, write what came to mind.
               </p>
             </div>
 
-            {/* Bento Block 4: SCAMPER Prompts */}
-            <div className="rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 hover:border-zinc-800/80 transition-all duration-300 relative overflow-hidden group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
-                <Shuffle className="h-5 w-5" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">Brainstorm Tricks</h3>
-              <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                Stuck on an idea? Use simple word prompts to change, mix, or rearrange things. It’s like a puzzle helper for your thoughts.
+            {/* Bento Block 4: SCAMPER */}
+            <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
+              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">04. Stretch</span>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Ask better questions</h3>
+              <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
+                Pick one idea and answer simple prompts: What could you swap? Combine? Cut? You’ll find new angles.
               </p>
             </div>
 
-            {/* Bento Block 5: Converge */}
-            <div className="rounded-2xl border border-zinc-900 bg-zinc-950/40 p-8 hover:border-zinc-800/80 transition-all duration-300 relative overflow-hidden group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-900 text-white mb-6">
-                <Scale className="h-5 w-5" />
+            {/* Bento Block 5: Converge + Ship */}
+            <div className="md:col-span-2 rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative overflow-hidden group">
+              <div className="space-y-1">
+                <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">05. Finish</span>
+                <h3 className="text-[20px] font-semibold text-white leading-snug">Keep, drop, or share</h3>
+                <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans max-w-md">
+                  Go through your list. Keep the good ones, drop the weak ones, or share a short public note when something is done. Your private notes stay private.
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-white">Pick the Winners</h3>
-              <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-                {"It's"} easy to make up ideas, but hard to choose the best ones. Score and clean up your list to find the absolute best ones to build.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Onchain Proofs Section */}
-      <section id="onchain" className="py-20 border-t border-zinc-900 bg-[#030303]">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-400 mb-6 border border-zinc-800">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                <span>Digital Stamp</span>
-              </div>
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl leading-tight font-serif font-normal">
-                Prove it was your idea first.
-              </h2>
-              <p className="mt-6 text-zinc-400 text-sm sm:text-base leading-relaxed font-sans">
-                When you are ready, Createvity makes a unique digital code for your work (like a digital fingerprint of your title and link).
-              </p>
-              <p className="mt-4 text-zinc-400 text-sm sm:text-base leading-relaxed font-sans">
-                This registers a public, timestamped digital receipt. Anyone can verify you had this exact idea at this exact time, without you ever having to show them your private notes.
-              </p>
-
-              <div className="mt-8 grid grid-cols-2 gap-6 border-t border-zinc-900/60 pt-8">
-                <div>
-                  <p className="text-2xl font-bold text-white font-sans">100%</p>
-                  <p className="mt-1 text-xs text-zinc-500 font-sans">Draft Privacy Guarded</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-zinc-300 font-sans">Unique</p>
-                  <p className="mt-1 text-xs text-zinc-500 font-sans">Digital Fingerprints</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Visual Cryptography Hash Panel */}
-            <div className="rounded-2xl border border-zinc-900 bg-zinc-950 p-6 font-mono text-xs text-zinc-400 relative overflow-hidden">
-              <div className="absolute top-2 right-2 flex gap-1">
-                <span className="h-2 w-2 rounded-full bg-zinc-800" />
-                <span className="h-2 w-2 rounded-full bg-zinc-800" />
-                <span className="h-2 w-2 rounded-full bg-zinc-800" />
-              </div>
-              
-              <div className="border-b border-zinc-900 pb-3 mb-4">
-                <p className="text-zinc-500">{"// Creating a unique fingerprint for your idea"}</p>
-              </div>
-
-              <div className="space-y-4 font-sans">
-                <div className="font-mono">
-                  <p className="text-zinc-400">const ideaData = &#123;</p>
-                  <p className="pl-4">id: <span className="text-zinc-300">&quot;idea_d8c973a2&quot;</span>,</p>
-                  <p className="pl-4">title: <span className="text-zinc-300">&quot;New Art Idea&quot;</span>,</p>
-                  <p className="pl-4">link: <span className="text-zinc-300">&quot;https://mywork.com&quot;</span></p>
-                  <p className="text-zinc-400">&#125;;</p>
-                </div>
-
-                <div className="font-mono">
-                  <p className="text-zinc-500">{"// Compute fingerprint locally"}</p>
-                  <p className="text-zinc-400">
-                    const fingerprint = hash(
-                  </p>
-                  <p className="pl-4 text-zinc-300">
-                    ideaData.id + ideaData.title + ideaData.link
-                  </p>
-                  <p className="text-zinc-400">);</p>
-                </div>
-
-                <div className="bg-zinc-900/60 p-3 rounded-lg border border-zinc-800/80 font-mono">
-                  <p className="text-zinc-500">{"// Resulting Unique Fingerprint:"}</p>
-                  <p className="text-zinc-200 mt-1 break-all select-all selection:bg-zinc-800">
-                    0x937f2e86d26c59b207559195b058097b6ec34d284a14b9a3f2d655f47514f9g8
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2 text-[10px] text-zinc-400 bg-zinc-900/20 border border-zinc-800/50 p-2 rounded-lg font-sans">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-500 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-zinc-500" />
-                  </span>
-                  <span>Saved successfully</span>
-                </div>
+              <div className="shrink-0 font-serif font-normal text-[48px] sm:text-[64px] text-zinc-200 opacity-90 leading-none select-none tracking-tight sm:pr-4">
+                Ship it
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contract & Explorer Section */}
-      <section id="contract" className="py-20 border-t border-zinc-900 bg-zinc-950/20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-zinc-900 bg-zinc-950 p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-white to-zinc-800" />
-            
-            <div className="space-y-3">
-              <span className="inline-block badge bg-zinc-900 text-zinc-400 border border-zinc-800 font-sans">
-                Secure Registry
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-serif font-normal">
-                Verified Registry
-              </h2>
-              <p className="text-sm text-zinc-400 max-w-xl leading-relaxed font-sans">
-                A secure public registry. You can inspect the code directly or view existing receipts on the block explorer.
-              </p>
-              
-              {/* Address display */}
-              <div className="flex flex-wrap items-center gap-2 pt-2">
-                <div className="rounded-lg bg-zinc-900 px-3 py-2 font-mono text-xs sm:text-sm text-zinc-200 border border-zinc-800 flex items-center gap-3">
-                  <span className="select-all">{contractAddress}</span>
-                  <button
-                    type="button"
-                    onClick={handleCopy}
-                    className="text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none cursor-pointer"
-                    title="Copy Address"
-                  >
-                    {copied ? (
-                      <Check className="h-4 w-4 text-white animate-scale" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="shrink-0 flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-              <a
-                href={`https://testnet.monadvision.com/address/${contractAddress}`}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-300 px-6 text-sm font-semibold transition-all duration-200"
-              >
-                <span>View Explorer</span>
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
+      {/* Proof Section - Simple and Non-Technical */}
+      <section className="py-20 border-t border-zinc-900 bg-[#030303]">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-[13px] font-sans font-medium text-zinc-500 uppercase tracking-widest block mb-3">
+            Digital Proof
+          </span>
+          <h2 className="text-3xl sm:text-[40px] font-serif font-normal tracking-tight text-white leading-tight">
+            Prove you thought of it first.
+          </h2>
+          <p className="mt-6 text-zinc-500 text-sm sm:text-base leading-relaxed font-sans max-w-2xl mx-auto">
+            When you complete an idea, you can create a public digital receipt. It acts like a secure, timestamped stamp in a registry book. Anyone can verify that you owned that idea at that exact moment, while your raw drafts and personal notes stay 100% private to you.
+          </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-900 bg-[#030303] py-12 text-center text-xs text-zinc-500">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-4">
-          <p className="font-semibold text-zinc-400">Createvity Boost</p>
-          <p>
-            An open source project built for BuildAnything Spark. Distributed under the MIT License.
-          </p>
-          <div className="flex justify-center gap-4 text-zinc-400 pt-2">
-            <a href="https://monad.xyz" target="_blank" rel="noreferrer" className="hover:underline">Monad Network</a>
-            <span>•</span>
-            <a href="https://buildanything.so" target="_blank" rel="noreferrer" className="hover:underline">BuildAnything Spark</a>
+      <footer className="border-t border-zinc-900 bg-[#030303] py-8 px-[30px] text-zinc-500 font-sans text-xs">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <TurbineIcon className="h-5 w-5 text-white" />
+            <span className="font-semibold text-white text-sm">Createvity</span>
+          </div>
+          <div className="text-[11px] text-zinc-600">
+            Open Source under MIT License
           </div>
         </div>
       </footer>
