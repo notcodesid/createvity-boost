@@ -68,19 +68,19 @@ export function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
           {/* Monochromatic Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/80 bg-zinc-900/40 px-3.5 py-1 text-[13px] font-sans text-zinc-400 mb-6 hover:border-zinc-700/80 transition-colors cursor-pointer">
-            <span>Where your ideas become real</span>
+            <span>A notepad for your creativity</span>
             <ArrowRight className="h-3 w-3 text-zinc-500" />
           </div>
 
           {/* Heading in Hedvig Letters Serif */}
           <h1 className="text-[44px] sm:text-[80px] font-serif font-normal tracking-tight text-white leading-[1.05] max-w-4xl mx-auto">
-            Write down your ideas. <br />
-            Make them real.
+            Think better. <br />
+            Create more.
           </h1>
 
           {/* Subtitle */}
           <p className="mt-8 text-[16px] sm:text-[18px] text-zinc-500 max-w-2xl mx-auto leading-relaxed font-sans">
-            A simple notepad for your brain. Jot down quick thoughts, use fun brainstorm exercises to grow them, and save them in a way that proves you came up with them first.
+            A simple notebook to clear your mind, play fun brainstorming games to boost your creativity, and save your ideas forever.
           </p>
 
           {/* CTA & Subtext - Square Corners (rounded-none) */}
