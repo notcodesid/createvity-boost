@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "description": "Research-backed creativity OS + onchain ship receipts on Monad",
   "scripts": {
-    "dev": "pnpm --filter @createvity/web dev",
+    "dev": "pnpm --parallel --filter @createvity/web --filter @createvity/api dev",
+    "dev:web": "pnpm --filter @createvity/web dev",
+    "dev:api": "pnpm --filter @createvity/api dev",
+    "start:api": "pnpm --filter @createvity/api start",
     "build": "pnpm --filter @createvity/web build",
     "contracts:build": "pnpm --filter @createvity/contracts build",
     "contracts:test": "pnpm --filter @createvity/contracts test"

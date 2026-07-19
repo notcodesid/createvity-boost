@@ -16,30 +16,35 @@ Creative systems fail because generation, evaluation, and shipping blur. Ideas d
 ## Monorepo layout
 
 ```
-apps/web          Frontend (creativity OS UI)
-contracts         ShipReceipt.sol (Foundry)
-packages/shared   Shared types (optional)
-packages/chain    ABI + addresses (optional)
+apps/web          Frontend (creativity OS UI) — not built yet
+apps/api          Offchain API (Hono + SQLite) ✅
+contracts         ShipReceipt.sol (Foundry) ✅ deployed
+packages/shared   Shared types ✅
+packages/chain    ABI + addresses ✅
 docs              Architecture notes
 ```
 
 ## Status
 
-Scaffold only — folders and placeholders, no application code yet.
+- **Contracts:** ShipReceipt on Monad testnet, tested
+- **API:** ideas / sessions / profile / ship-meta ✅
+- **Web:** Next.js studio UI ✅
 
-## Setup (later)
+## Setup
 
 ```bash
 pnpm install
-pnpm dev
+pnpm dev              # api :8787 + web :3000
+pnpm dev:api          # api only
+pnpm dev:web          # web only
 ```
 
-## Live (fill after deploy)
+## Live
 
-- App:
-- Demo video:
-- Contract address:
-- Explorer:
+- Contract: `0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E` (Monad testnet `10143`)
+- Explorer: https://testnet.monadvision.com/address/0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E
+- API health: `http://localhost:8787/health`
+
 
 ## License
 

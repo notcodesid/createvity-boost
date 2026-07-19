@@ -24,4 +24,11 @@
 
 ## Repo model
 
-Single monorepo: `apps/web` + `contracts` (+ optional `packages/*`, `apps/api` later).
+Single monorepo: `apps/web` + `apps/api` + `contracts` + `packages/*`.
+
+## Backend
+
+- **Stack:** Hono + better-sqlite3 + Zod
+- **Auth:** `X-Client-Id` header (stable browser UUID)
+- **Onchain:** client signs `ShipReceipt.ship()`; API only stores ship meta after success
+- **Run:** `pnpm dev:api` → `http://localhost:8787`
