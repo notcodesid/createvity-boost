@@ -3,8 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "echo \"TODO: forge build / hardhat compile\"",
-    "test": "echo \"TODO: forge test / hardhat test\"",
-    "deploy": "echo \"TODO: deploy ShipReceipt to Monad\""
+    "build": "forge build",
+    "test": "forge test -vv",
+    "test:gas": "forge test --gas-report",
+    "deploy:testnet": "forge script script/Deploy.s.sol:Deploy --rpc-url https://testnet-rpc.monad.xyz --account monad-deployer --broadcast",
+    "verify:testnet": "echo \"Usage: forge verify-contract <ADDR> ShipReceipt --chain 10143 --verifier sourcify --verifier-url https://sourcify-api-monad.blockvision.org/\""
   }
 }

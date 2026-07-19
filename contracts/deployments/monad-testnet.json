@@ -1,0 +1,12 @@
+{
+  "network": "monad-testnet",
+  "chainId": 10143,
+  "rpc": "https://testnet-rpc.monad.xyz",
+  "explorer": "https://testnet.monadvision.com",
+  "contract": "ShipReceipt",
+  "address": "0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E",
+  "deployer": "0xA2993a29E80253ADc5a24788eb452b15564437C8",
+  "txHash": "0xf54fb5937594e5ca1d68902d856a54ecdd6c2e89628036f32198da7f1fa6b3ec",
+  "deployedAt": "2026-07-19",
+  "notes": "Spark hack deploy — ShipReceipt append-only ship log"
+}
