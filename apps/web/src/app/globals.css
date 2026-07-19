@@ -112,7 +112,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   background: var(--amber);
-  color: var(--ink);
+  color: var(--cream);
   transition: background-color 0.15s ease;
 }
  
@@ -239,4 +239,13 @@ body {
   padding: 0.125rem 0.5rem;
   font-size: 0.6875rem;
   font-weight: 500;
+}
+ 
+/* Hide scrollbars on sticky dashboard containers */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

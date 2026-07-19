@@ -13,14 +13,20 @@ import { useState } from "react";
 import { AuthGate } from "./auth-gate";
 import { ActivityGraph } from "./activity-graph";
 import { CaptureBar } from "./capture-bar";
+import { ConvergePanel } from "./converge-panel";
+import { DivergePanel } from "./diverge-panel";
 import { IdeaList } from "./idea-list";
+import { InputDiet } from "./input-diet";
 import { ProfileCard } from "./profile-card";
+import { ProtocolChecklist } from "./protocol-checklist";
 import { ReceiptsPanel } from "./receipts-panel";
 import { ScamperPanel } from "./scamper-panel";
 import { ShipModal } from "./ship-modal";
 import { WalkPanel } from "./walk-panel";
 import { WalletButton } from "./wallet-button";
+import { ModeGuide } from "./mode-guide";
 import { SHIP_RECEIPT_ADDRESS } from "@/lib/wagmi";
+import { LOOP_STEPS } from "@/lib/research-content";
 
 const MODES = [
   { id: "capture", label: "Capture", icon: Lightbulb },
@@ -40,22 +46,30 @@ export function StudioApp() {
   return (
     <AuthGate>
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
-        <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-1">
+        <header className="flex items-center justify-between border-b border-zinc-900 pb-4">
+          <div className="flex items-center gap-2">
             <TurbineIcon className="h-6 w-6 text-white" />
-            <p className="text-xs text-muted">
-              Think better. Create more.
-            </p>
+            <span className="font-semibold text-white text-lg tracking-tight">Createvity</span>
           </div>
           <WalletButton />
         </header>
-
+ 
+        <div className="py-2">
+          <h1 className="text-2xl font-serif font-normal text-white">
+            Think better. Create more.
+          </h1>
+          <p className="text-xs text-zinc-500 mt-1 max-w-xl leading-relaxed">
+            A simple, private workspace to capture fragments, unlock your blockages, and select your best ideas.
+          </p>
+        </div>
+ 
         <nav
-          className="flex flex-wrap gap-1 border-b border-line pb-px"
+          className="flex flex-wrap gap-1 border-b border-zinc-900 pb-px"
           aria-label="Studio modes"
         >
           {MODES.map(({ id, label, icon: Icon }) => {
             const active = mode === id;
+            const meta = LOOP_STEPS.find((s) => s.id === id);
             return (
               <button
                 key={id}
@@ -66,6 +80,7 @@ export function StudioApp() {
                     : "text-ink-soft hover:bg-paper-muted/60"
                 }`}
                 aria-current={active ? "page" : undefined}
+                title={meta?.blurb}
                 onClick={() => setMode(id)}
               >
                 <Icon className="h-4 w-4" aria-hidden />
@@ -79,60 +94,79 @@ export function StudioApp() {
           <main className="min-w-0 space-y-5">
             {mode === "capture" ? (
               <>
+                <ModeGuide
+                  title="Capture vault"
+                  science="Psychologist Robert Epstein: the bottleneck isn’t generation with age — it’s failure to record. Separate capture from critique."
+                  how={[
+                    "Dump fragments immediately — status starts raw.",
+                    "Use a seed if the page feels too free.",
+                    "Do not kill or ship from this tab.",
+                    "When stuck generating, switch to Walk or SCAMPER.",
+                  ]}
+                />
                 <CaptureBar />
                 <section>
-                  <h2 className="mb-2 text-sm font-medium text-muted">Ideas</h2>
-                  <IdeaList filter="all" mode="browse" />
+                  <div className="mb-2 flex items-baseline justify-between gap-2">
+                    <h2 className="text-sm font-semibold text-ink">Your vault</h2>
+                    <span className="text-xs text-muted">All statuses</span>
+                  </div>
+                  <IdeaList
+                    filter="all"
+                    mode="browse"
+                    emptyTitle="No ideas yet — that’s the problem we fix"
+                    emptyBody="Don’t wait for a ‘good’ idea. Capture a bad one. Volume first; judgment later in Converge."
+                  />
                 </section>
               </>
             ) : null}
 
-            {mode === "diverge" ? (
-              <>
-                <p className="text-sm text-muted">
-                  Capture only. Keep / kill / ship later in Converge.
-                </p>
-                <CaptureBar />
-                <IdeaList filter="raw" mode="browse" />
-              </>
-            ) : null}
+            {mode === "diverge" ? <DivergePanel /> : null}
 
             {mode === "walk" ? <WalkPanel /> : null}
 
             {mode === "scamper" ? <ScamperPanel /> : null}
 
             {mode === "converge" ? (
-              <>
-                <p className="text-sm text-muted">
-                  Keep, kill, or ship. Wallet needed only to ship.
-                </p>
-                <IdeaList
-                  filter="all"
-                  mode="converge"
-                  onShip={(idea) => setShipIdea(idea)}
-                />
-              </>
+              <ConvergePanel onShip={(idea) => setShipIdea(idea)} />
             ) : null}
           </main>
 
-          <aside className="space-y-5">
+          <aside className="space-y-6 lg:sticky lg:top-24 lg:h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-3 scrollbar-none">
+            <ProtocolChecklist onGo={(m) => setMode(m)} />
+            <hr className="border-zinc-900" />
             <ActivityGraph />
+            <hr className="border-zinc-900" />
             <ProfileCard />
+            <hr className="border-zinc-900" />
             <ReceiptsPanel />
-            <div className="rounded-lg border border-line bg-cream p-4 text-xs leading-relaxed text-muted">
-              <p className="mb-1 font-medium text-ink">ShipReceipt</p>
-              <p className="font-mono break-all text-[11px]">{SHIP_RECEIPT_ADDRESS}</p>
+            <hr className="border-zinc-900" />
+            <InputDiet />
+            <hr className="border-zinc-900" />
+            <div className="text-xs leading-relaxed text-zinc-500 space-y-2">
+              <p className="font-semibold text-white">Onchain layer</p>
+              <p>
+                Ideas stay offchain. Only ships hit Monad as public receipts —
+                accountability, not surveillance.
+              </p>
+              <p className="font-mono break-all text-[10px] text-zinc-400">
+                {SHIP_RECEIPT_ADDRESS}
+              </p>
               <a
-                className="mt-2 inline-block text-amber-deep underline-offset-2 hover:underline focus-ring rounded"
+                className="mt-1 inline-block text-zinc-300 hover:text-white underline underline-offset-4"
                 href={`https://testnet.monadvision.com/address/${SHIP_RECEIPT_ADDRESS}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                MonadVision
+                View ShipReceipt on MonadVision
               </a>
             </div>
           </aside>
         </div>
+
+        <footer className="border-t border-line pt-4 text-center text-xs text-muted">
+          Capture → Diverge / Walk / SCAMPER → Converge → Ship. Science runs the
+          system; you run the craft.
+        </footer>
 
         <ShipModal
           idea={shipIdea}
