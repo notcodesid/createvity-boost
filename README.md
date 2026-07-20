@@ -2,22 +2,9 @@
 
 **Think better. Create more.**
 
-A research-backed creativity OS that helps you **capture ideas without judging them**, **generate with structure** (walk + SCAMPER), then **converge and ship** — with a public **ShipReceipt** on **Monad** so work actually leaves the studio.
-
-Built for **[BuildAnything Spark](https://buildanything.so/hackathons/spark)** — *build anything onchain that solves a personal problem*.
-
-| | |
-|---|---|
-| **Repo** | https://github.com/notcodesid/createvity-boost |
-| **Chain** | Monad Testnet (`10143`) |
-| **Contract** | [`ShipReceipt`](https://testnet.monadvision.com/address/0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E) `0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E` |
-| **Deploy tx** | [`0xf54fb593…`](https://testnet.monadvision.com/tx/0xf54fb5937594e5ca1d68902d856a54ecdd6c2e89628036f32198da7f1fa6b3ec) |
-
-> **Live app URL** — add your hosted Vercel / API URL here before submit.
-
 ---
 
-## Problem (personal)
+## Problem
 
 I know the science of creativity — walk when stuck, capture immediately, separate generation from evaluation — and I still fail to run the system.
 
@@ -183,9 +170,24 @@ DATABASE_URL=postgresql://...   # Postgres (e.g. Supabase) — required
 
 **Google Cloud Console**
 
-- Authorized JS origin: `http://localhost:3000`
-- Authorized redirect URI: `http://localhost:3000/api/auth/callback/google`  
-  (add production URLs when you host)
+- Authorized JS origins:
+  - `http://localhost:3000`
+  - `https://createvity-boost-web.vercel.app` (production)
+- Authorized redirect URIs:
+  - `http://localhost:3000/api/auth/callback/google`
+  - `https://createvity-boost-web.vercel.app/api/auth/callback/google`
+
+**Vercel (production) — set these on the web project**
+
+```bash
+AUTH_URL=https://createvity-boost-web.vercel.app
+AUTH_SECRET=<same long random string as local / API>
+GOOGLE_CLIENT_ID=<from Google Cloud Console>
+GOOGLE_CLIENT_SECRET=<from Google Cloud Console>
+NEXT_PUBLIC_API_URL=<your deployed API URL>
+```
+
+Without `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `AUTH_SECRET`, `/api/auth/google` returns 500.
 
 ### Run
 
@@ -264,6 +266,22 @@ Stronger empirics we encode as product behavior:
 - **Ship obligation + success on your terms** (Paul Klein)
 
 Treat popular books as inspiration; walking / structure / diverge-converge have the strongest backing in our stack.
+
+---
+
+## Project links
+
+A research-backed creativity OS that helps you **capture ideas without judging them**, **generate with structure** (walk + SCAMPER), then **converge and ship** — with a public **ShipReceipt** on **Monad** so work actually leaves the studio.
+
+Built for **[BuildAnything Spark](https://buildanything.so/hackathons/spark)** — *build anything onchain that solves a personal problem*.
+
+| | |
+|---|---|
+| **Repo** | https://github.com/notcodesid/createvity-boost |
+| **Chain** | Monad Testnet (`10143`) |
+| **Contract** | [`ShipReceipt`](https://testnet.monadvision.com/address/0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E) `0xB56f1d22C37c85C7658C66Fb692FD9AB74405c4E` |
+| **Deploy tx** | [`0xf54fb593…`](https://testnet.monadvision.com/tx/0xf54fb5937594e5ca1d68902d856a54ecdd6c2e89628036f32198da7f1fa6b3ec) |
+| **Live app** | *(add hosted Vercel / API URL before submit)* |
 
 ---
 

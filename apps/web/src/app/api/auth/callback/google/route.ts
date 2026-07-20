@@ -2,6 +2,8 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import {
   SESSION_COOKIE,
+  getAuthBaseUrl,
+  getGoogleClientId,
   getGoogleRedirectUri,
   signSession,
 } from "@/lib/session";
@@ -11,11 +13,7 @@ export async function GET(req: NextRequest) {
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
   const err = url.searchParams.get("error");
-
-  const base =
-    process.env.AUTH_URL ??
-    process.env.NEXTAUTH_URL ??
-    "http://localhost:3000";
+  const base = getAuthBaseUrl(req);
 
   if (err) {
     return NextResponse.redirect(
@@ -31,10 +29,15 @@ export async function GET(req: NextRequest) {
     return NextResponse.redirect(`${base}/?authError=invalid_state`);
   }
 
-  const clientId =
-    process.env.GOOGLE_CLIENT_ID ?? process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+  let clientId: string;
+  try {
+    clientId = getGoogleClientId();
+  } catch {
+    return NextResponse.redirect(`${base}/?authError=missing_google_env`);
+  }
+
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-  if (!clientId || !clientSecret) {
+  if (!clientSecret) {
     return NextResponse.redirect(`${base}/?authError=missing_google_env`);
   }
 
@@ -45,7 +48,7 @@ export async function GET(req: NextRequest) {
       code,
       client_id: clientId,
       client_secret: clientSecret,
-      redirect_uri: getGoogleRedirectUri(),
+      redirect_uri: getGoogleRedirectUri(req),
       grant_type: "authorization_code",
     }),
   });
@@ -83,20 +86,26 @@ export async function GET(req: NextRequest) {
     return NextResponse.redirect(`${base}/?authError=incomplete_profile`);
   }
 
-  const sessionToken = await signSession({
-    sub: `google:${profile.id}`,
-    email: profile.email,
-    name: profile.name,
-    picture: profile.picture,
-  });
+  let sessionToken: string;
+  try {
+    sessionToken = await signSession({
+      sub: `google:${profile.id}`,
+      email: profile.email,
+      name: profile.name,
+      picture: profile.picture,
+    });
+  } catch (e) {
+    console.error("[auth/callback] signSession failed:", e);
+    return NextResponse.redirect(`${base}/?authError=missing_auth_secret`);
+  }
 
-  jar.set(SESSION_COOKIE, sessionToken, {
+  const res = NextResponse.redirect(`${base}/`);
+  res.cookies.set(SESSION_COOKIE, sessionToken, {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
     path: "/",
     maxAge: 60 * 60 * 24 * 7,
   });
-
-  return NextResponse.redirect(`${base}/`);
+  return res;
 }

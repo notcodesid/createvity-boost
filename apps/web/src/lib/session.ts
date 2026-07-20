@@ -45,21 +45,55 @@ export async function verifySession(token: string): Promise<SessionUser | null> 
 
 export const SESSION_COOKIE = "createvity_session";
 
-export function getGoogleRedirectUri(): string {
-  const base =
+/**
+ * Public origin of the web app (no trailing slash).
+ * Prefer AUTH_URL / NEXTAUTH_URL; on Vercel fall back to VERCEL_URL / request host.
+ */
+export function getAuthBaseUrl(req?: Request): string {
+  const explicit =
     process.env.AUTH_URL ??
     process.env.NEXTAUTH_URL ??
-    "http://localhost:3000";
-  return `${base.replace(/\/$/, "")}/api/auth/callback/google`;
+    process.env.NEXT_PUBLIC_APP_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+
+  if (process.env.VERCEL_URL) {
+    const host = process.env.VERCEL_URL.replace(/\/$/, "");
+    return host.startsWith("http") ? host : `https://${host}`;
+  }
+
+  if (req) {
+    const host =
+      req.headers.get("x-forwarded-host") ?? req.headers.get("host");
+    const proto =
+      req.headers.get("x-forwarded-proto") ??
+      (host?.includes("localhost") ? "http" : "https");
+    if (host) return `${proto}://${host}`.replace(/\/$/, "");
+  }
+
+  return "http://localhost:3000";
 }
 
-export function getGoogleAuthUrl(state: string): string {
-  const clientId = process.env.GOOGLE_CLIENT_ID ?? process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-  if (!clientId) throw new Error("GOOGLE_CLIENT_ID is not set");
+export function getGoogleRedirectUri(req?: Request): string {
+  return `${getAuthBaseUrl(req)}/api/auth/callback/google`;
+}
+
+export function getGoogleClientId(): string {
+  const clientId =
+    process.env.GOOGLE_CLIENT_ID ?? process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+  if (!clientId) {
+    throw new Error(
+      "GOOGLE_CLIENT_ID is not set (also checked NEXT_PUBLIC_GOOGLE_CLIENT_ID)",
+    );
+  }
+  return clientId;
+}
+
+export function getGoogleAuthUrl(state: string, req?: Request): string {
+  const clientId = getGoogleClientId();
 
   const params = new URLSearchParams({
     client_id: clientId,
-    redirect_uri: getGoogleRedirectUri(),
+    redirect_uri: getGoogleRedirectUri(req),
     response_type: "code",
     scope: "openid email profile",
     access_type: "online",
