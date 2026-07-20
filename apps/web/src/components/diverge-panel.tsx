@@ -48,12 +48,6 @@ export function DivergePanel() {
 
       <CaptureBar
         contextNote={`Generate prompt: ${activePrompt}`}
-        seeds={[
-          "Bad idea #1 under this prompt",
-          "Even worse idea",
-          "Surprisingly workable idea",
-          "Opposite of my first instinct",
-        ]}
       />
 
       <section>

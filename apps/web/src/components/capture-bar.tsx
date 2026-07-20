@@ -2,15 +2,13 @@
 
 import { useState } from "react";
 import { useCreateIdea } from "@/hooks/use-ideas";
-import { CAPTURE_SEEDS } from "@/lib/research-content";
 
 type Props = {
   /** Extra default body tag line */
   contextNote?: string;
-  seeds?: string[];
 };
 
-export function CaptureBar({ contextNote, seeds = CAPTURE_SEEDS }: Props) {
+export function CaptureBar({ contextNote }: Props) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const create = useCreateIdea();
@@ -25,9 +23,6 @@ export function CaptureBar({ contextNote, seeds = CAPTURE_SEEDS }: Props) {
     setBody("");
   }
 
-  function applySeed(seed: string) {
-    setTitle(seed);
-  }
 
   return (
     <form onSubmit={onSubmit} className="rounded-xl border border-line bg-cream p-4 sm:p-5">
@@ -64,21 +59,6 @@ export function CaptureBar({ contextNote, seeds = CAPTURE_SEEDS }: Props) {
         maxLength={5000}
       />
 
-      <div className="mb-4">
-        <p className="label">Spark seeds (click to fill)</p>
-        <div className="flex flex-wrap gap-2">
-          {seeds.slice(0, 6).map((seed) => (
-            <button
-              key={seed}
-              type="button"
-              className="rounded-full border border-line bg-paper-muted/50 px-3 py-1.5 text-left text-xs text-ink hover:border-amber hover:bg-amber/10 focus-ring"
-              onClick={() => applySeed(seed)}
-            >
-              {seed}
-            </button>
-          ))}
-        </div>
-      </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-muted">Inner critic stays off. Status starts as raw.</p>
