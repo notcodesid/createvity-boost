@@ -4,11 +4,14 @@ import { useState } from "react";
 import { useCreateIdea } from "@/hooks/use-ideas";
 
 type Props = {
-  /** Extra default body tag line */
   contextNote?: string;
+  heading?: string;
 };
 
-export function CaptureBar({ contextNote }: Props) {
+export function CaptureBar({
+  contextNote,
+  heading = "Catch an idea",
+}: Props) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const create = useCreateIdea();
@@ -23,19 +26,15 @@ export function CaptureBar({ contextNote }: Props) {
     setBody("");
   }
 
-
   return (
-    <form onSubmit={onSubmit} className="rounded-xl border border-line bg-cream p-4 sm:p-5">
-      <div className="mb-3">
-        <h2 className="font-semibold text-ink">Catch it now — judge later</h2>
-        <p className="mt-1 text-sm text-muted">
-          Ideas fade if you don&apos;t write them down. Dump the fragment.
-          Deciding is a different tab.
-        </p>
-      </div>
+    <form
+      onSubmit={onSubmit}
+      className="rounded-xl border border-line bg-cream p-4 sm:p-5"
+    >
+      <h2 className="mb-3 font-semibold text-ink">{heading}</h2>
 
       <label className="label" htmlFor="idea-title">
-        Idea (messy is fine)
+        Idea
       </label>
       <input
         id="idea-title"
@@ -48,26 +47,24 @@ export function CaptureBar({ contextNote }: Props) {
         required
       />
       <label className="label" htmlFor="idea-body">
-        Notes / fragments
+        Notes (optional)
       </label>
       <textarea
         id="idea-body"
-        className="input mb-3 min-h-24 resize-y"
-        placeholder="Half-sentences, metaphors, who it’s for — no polish"
+        className="input mb-4 min-h-20 resize-y"
+        placeholder="Any extra detail…"
         value={body}
         onChange={(e) => setBody(e.target.value)}
         maxLength={5000}
       />
 
-
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-muted">Inner critic stays off. Status starts as raw.</p>
+      <div className="flex justify-end">
         <button
           type="submit"
           className="btn-accent"
           disabled={!title.trim() || create.isPending}
         >
-          {create.isPending ? "Saving…" : "Catch to vault"}
+          {create.isPending ? "Saving…" : "Save idea"}
         </button>
       </div>
       {create.isError ? (

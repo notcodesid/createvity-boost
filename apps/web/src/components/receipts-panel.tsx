@@ -7,13 +7,13 @@ export function ReceiptsPanel() {
   const { data, isLoading, isError, error, refetch } = useReceipts();
 
   if (isLoading) {
-    return <div className="h-28 animate-pulse border border-zinc-900 bg-zinc-950/40" />;
+    return <div className="h-20 animate-pulse border border-zinc-900 bg-zinc-950/40" />;
   }
 
   if (isError) {
     return (
       <div className="space-y-2 py-1">
-        <p className="mb-2 text-sm text-coral">{(error as Error).message}</p>
+        <p className="text-sm text-coral">{(error as Error).message}</p>
         <button type="button" className="btn-ghost" onClick={() => void refetch()}>
           Retry
         </button>
@@ -25,16 +25,9 @@ export function ReceiptsPanel() {
 
   return (
     <div className="space-y-3 py-1">
-      <h2 className="font-semibold text-ink">Ships into the world</h2>
-      <p className="mt-1 mb-3 text-xs leading-relaxed text-muted">
-        Klein: if the work has value, you have an obligation to get it out. Onchain
-        receipts are public proof — not private notes.
-      </p>
+      <h2 className="font-semibold text-ink">Ships</h2>
       {receipts.length === 0 ? (
-        <div className="border border-dashed border-zinc-900 p-3 text-sm text-muted">
-          None yet. When something is ready, open <strong className="text-ink">Decide</strong>{" "}
-          → Ship on Monad. Draft body stays private; only title + link go public.
-        </div>
+        <p className="text-sm text-muted">None yet. Ship from Decide.</p>
       ) : (
         <ul className="space-y-3">
           {receipts.map((r) => (
@@ -45,7 +38,7 @@ export function ReceiptsPanel() {
               <div>
                 <p className="font-medium text-ink">{r.shipTitle}</p>
                 <p className="font-mono text-xs text-muted">
-                  receipt #{r.shipReceiptId ?? "—"}
+                  #{r.shipReceiptId ?? "—"}
                 </p>
               </div>
               {r.explorerTxUrl ? (

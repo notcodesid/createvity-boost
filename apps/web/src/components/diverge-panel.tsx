@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { CaptureBar } from "./capture-bar";
 import { IdeaList } from "./idea-list";
-import { ModeGuide } from "./mode-guide";
 import { DIVERGE_PROMPTS } from "@/lib/research-content";
 
 export function DivergePanel() {
@@ -11,19 +10,8 @@ export function DivergePanel() {
 
   return (
     <div className="space-y-5">
-      <ModeGuide
-        title="Generate — more ideas, no judging"
-        science="Creativity researchers frame work as toggling: many options first, then select. Mixing them mid-stream activates the inner critic and kills volume. Solo generation also beats classic group brainstorming."
-        how={[
-          "Use a prompt below or invent chaos.",
-          "Catch many raw ideas — quality is illegal here.",
-          "Don’t open Decide until the pile feels silly-large.",
-          "Walk or Prompt if you stall.",
-        ]}
-      />
-
       <div className="rounded-xl border border-line bg-cream p-4">
-        <p className="label">Generate prompts</p>
+        <p className="label">Pick a prompt</p>
         <div className="flex flex-wrap gap-2">
           {DIVERGE_PROMPTS.map((p) => (
             <button
@@ -40,23 +28,20 @@ export function DivergePanel() {
             </button>
           ))}
         </div>
-        <p className="mt-3 rounded-lg bg-ink/[0.04] px-3 py-2 text-sm text-ink">
-          <span className="font-medium">Active constraint: </span>
-          {activePrompt}
-        </p>
       </div>
 
       <CaptureBar
+        heading="Add ideas"
         contextNote={`Generate prompt: ${activePrompt}`}
       />
 
       <section>
-        <h2 className="mb-2 text-sm font-semibold text-ink">Raw pile only</h2>
+        <h2 className="mb-2 text-sm font-semibold text-ink">Raw ideas</h2>
         <IdeaList
           filter="raw"
           mode="browse"
           emptyTitle="No raw ideas yet"
-          emptyBody="Generate only shows unjudged ideas. Catch freely — Keep/Drop lives in Decide."
+          emptyBody="Add a few above. No judging here."
         />
       </section>
     </div>

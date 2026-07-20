@@ -12,10 +12,10 @@ const STATUS_STYLE: Record<IdeaStatus, string> = {
 };
 
 const STATUS_HELP: Record<IdeaStatus, string> = {
-  raw: "Unjudged. Still in Generate land.",
-  keep: "Worth another pass or Prompt.",
-  kill: "Released. Space for better ideas.",
-  shipped: "In the world. Proof on Monad.",
+  raw: "Not decided yet",
+  keep: "Keeping this one",
+  kill: "Dropped",
+  shipped: "Shipped onchain",
 };
 
 type Props = {
@@ -34,8 +34,8 @@ export function IdeaList({
   selectedId,
   onSelect,
   onShip,
-  emptyTitle = "Vault is empty",
-  emptyBody = "Catch something messy above. Total freedom is often the enemy — a seed prompt helps.",
+  emptyTitle = "No ideas yet",
+  emptyBody = "Catch one above.",
 }: Props) {
   const { data, isLoading, isError, error, refetch, isFetching } = useIdeas(filter);
   const update = useUpdateIdea();
@@ -130,7 +130,6 @@ export function IdeaList({
                     className="btn-ghost text-xs"
                     disabled={update.isPending}
                     onClick={() => update.mutate({ id: idea.id, body: { status: "keep" } })}
-                    title="Still curious — refine later"
                   >
                     Keep
                   </button>
@@ -139,18 +138,16 @@ export function IdeaList({
                     className="btn-ghost text-xs"
                     disabled={update.isPending}
                     onClick={() => update.mutate({ id: idea.id, body: { status: "kill" } })}
-                    title="Ego, not energy — release it"
                   >
-                    Kill
+                    Drop
                   </button>
                   <button
                     type="button"
                     className="btn-accent text-xs"
                     onClick={() => onShip?.(idea)}
-                    title="Put a public version into the world"
                   >
                     <Rocket className="h-3.5 w-3.5" aria-hidden />
-                    Ship on Monad
+                    Ship
                   </button>
                   <button
                     type="button"
@@ -174,7 +171,7 @@ export function IdeaList({
                   className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-amber-deep underline-offset-2 hover:underline focus-ring rounded"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Onchain ship receipt
+                  View ship
                   <ExternalLink className="h-3 w-3" aria-hidden />
                 </a>
               ) : null}
