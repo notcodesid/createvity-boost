@@ -1,37 +1,41 @@
-/** Research-backed copy + prompts for Createvity studio. */
+/** Research-backed copy + prompts for Creativity studio. */
 
 export const LOOP_STEPS = [
   {
     id: "capture",
-    title: "Capture",
-    blurb: "Record now. Judge later.",
+    title: "Catch",
+    blurb: "Save the idea before it disappears.",
     science: "Ideas die from not being written down — not from aging (Epstein).",
   },
   {
     id: "diverge",
-    title: "Diverge",
-    blurb: "Generate volume before quality.",
+    title: "Generate",
+    blurb: "Make more ideas. No judging yet.",
     science: "Default Mode Network lights up when you mind-wander and recombine.",
   },
   {
     id: "walk",
     title: "Walk",
-    blurb: "Phone-free walk when stuck.",
+    blurb: "Step away, then write what came up.",
     science: "Stanford: ~60% more creative output while walking (and briefly after).",
   },
   {
     id: "scamper",
-    title: "SCAMPER",
-    blurb: "Constraints beat blank pages.",
+    title: "Prompt",
+    blurb: "Use a checklist when you’re stuck.",
     science: "Structured prompts (Substitute…Rearrange) train divergent thinking.",
   },
   {
     id: "converge",
-    title: "Converge",
-    blurb: "Keep, kill, or ship.",
+    title: "Decide",
+    blurb: "Keep, drop, or ship.",
     science: "Executive network evaluates — never during generation.",
   },
 ] as const;
+
+/** Story line: Catch → Grow → Decide → Ship. Grow = Generate · Walk · Prompt. */
+export const LOOP_STORY =
+  "Catch → Generate · Walk · Prompt → Decide → Ship";
 
 export const CAPTURE_SEEDS = [
   "What if we removed the hardest requirement?",
@@ -110,7 +114,7 @@ export const SCAMPER_PROMPTS = [
 export const CONVERGE_RUBRIC = [
   {
     action: "Keep",
-    when: "Still curious; worth another diverge or SCAMPER pass.",
+    when: "Still curious — worth another Generate or Prompt pass.",
   },
   {
     action: "Kill",
@@ -144,8 +148,8 @@ export const INPUT_DIET = [
 
 export const FIRST_RUN = [
   { id: 1, text: "Write your definition of success (sidebar)", mode: "capture" as const },
-  { id: 2, text: "Capture 3 messy ideas (no judging)", mode: "capture" as const },
-  { id: 3, text: "Do one phone-free walk + capture", mode: "walk" as const },
-  { id: 4, text: "Run SCAMPER on your favorite raw idea", mode: "scamper" as const },
-  { id: 5, text: "Converge: keep / kill, then ship one", mode: "converge" as const },
+  { id: 2, text: "Catch 3 messy ideas (no judging)", mode: "capture" as const },
+  { id: 3, text: "Do one phone-free walk, then catch what came up", mode: "walk" as const },
+  { id: 4, text: "Run Prompt on your favorite raw idea", mode: "scamper" as const },
+  { id: 5, text: "Decide: keep / drop, then ship one", mode: "converge" as const },
 ];

@@ -32,10 +32,10 @@ export function CaptureBar({ contextNote, seeds = CAPTURE_SEEDS }: Props) {
   return (
     <form onSubmit={onSubmit} className="rounded-xl border border-line bg-cream p-4 sm:p-5">
       <div className="mb-3">
-        <h2 className="font-semibold text-ink">Capture now — judge later</h2>
+        <h2 className="font-semibold text-ink">Catch it now — judge later</h2>
         <p className="mt-1 text-sm text-muted">
-          Epstein: people don&apos;t generate fewer ideas as they age — they fail
-          to record them. Dump the fragment. Evaluation is a different mode.
+          Ideas fade if you don&apos;t write them down. Dump the fragment.
+          Deciding is a different tab.
         </p>
       </div>
 
@@ -87,7 +87,7 @@ export function CaptureBar({ contextNote, seeds = CAPTURE_SEEDS }: Props) {
           className="btn-accent"
           disabled={!title.trim() || create.isPending}
         >
-          {create.isPending ? "Saving…" : "Capture to vault"}
+          {create.isPending ? "Saving…" : "Catch to vault"}
         </button>
       </div>
       {create.isError ? (

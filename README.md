@@ -1,4 +1,4 @@
-# Createvity
+# Creativity
 
 **Think better. Create more.**
 
@@ -21,11 +21,11 @@ Creative tools are either empty notes apps or AI that writes *for* you. I needed
 
 ## Solution
 
-**Createvity** is a free creativity OS:
+**Creativity** is a free creativity OS:
 
 | Layer | What it does |
 |---|---|
-| **Offchain (app + API)** | Idea vault, diverge/converge modes, walk protocol, SCAMPER, success goals |
+| **Offchain (app + API)** | Idea vault, Catch / Generate / Walk / Prompt / Decide, success goals |
 | **Onchain (Monad)** | When you ship, write a public **ShipReceipt** — proof the work left your head |
 
 Personal problem → practical product → real onchain component (not wallet-connect cosplay).
@@ -36,19 +36,22 @@ Personal problem → practical product → real onchain component (not wallet-co
 
 ```
 Google sign-in
-    → Capture messy ideas (status: raw)
-    → Diverge (volume only) / Walk (~60% boost protocol) / SCAMPER (constraints)
-    → Converge: Keep · Kill · Ship
+    → Catch messy ideas (status: raw)
+    → Grow three ways: Generate · Walk · Prompt
+    → Decide: Keep · Kill · Ship
     → Ship on Monad → public receipt + vault marks "shipped"
 ```
 
-### Modes
+**Story:** Catch → Grow → Decide → Ship  
+**Tabs:** Catch · Generate · Walk · Prompt · Decide (Ship is the action inside Decide)
 
-1. **Capture** — Record now, judge later (Epstein). Spark seeds if the page is blank.
-2. **Diverge** — Generate only. Inner critic is off. Solo ideation before evaluation.
-3. **Walk** — Phone-free timer; forced capture when you return (Stanford walking study).
-4. **SCAMPER** — Substitute → Rearrange; structured prompts when freedom freezes you.
-5. **Converge** — Evaluate: keep, kill, or ship a public version.
+### Modes (5 tabs)
+
+1. **Catch** — Save the idea before it disappears. Judge later.
+2. **Generate** — Make more ideas. Inner critic off. Volume before quality.
+3. **Walk** — Phone-free timer; catch ideas when you return (Stanford walking study).
+4. **Prompt** — Checklist when stuck (SCAMPER under the hood: Substitute → Rearrange).
+5. **Decide** — Keep, drop, or ship a public version.
 
 ### Sidebar
 
@@ -205,7 +208,7 @@ pnpm contracts:test
 ### Ship flow (needs wallet)
 
 1. Sign in with Google  
-2. Capture ideas → Walk / SCAMPER → Converge  
+2. Catch ideas → Generate / Walk / Prompt → Decide  
 3. Connect wallet on **Monad testnet** (MON from faucet)  
 4. **Ship on Monad** → confirm tx → receipt on explorer + vault status `shipped`
 
@@ -215,13 +218,13 @@ pnpm contracts:test
 
 1. **Open app** — problem: creativity systems fail; this is the protocol.  
 2. **Sign in with Google.**  
-3. **Capture** 2–3 messy ideas (seeds if needed).  
-4. **Walk** — start timer (or end early) → forced capture.  
-5. **SCAMPER** — one letter or full run on a base idea.  
-6. **Converge** — Keep one, Kill one, **Ship** one.  
+3. **Catch** 2–3 messy ideas (seeds if needed).  
+4. **Walk** — start timer (or end early) → forced catch.  
+5. **Prompt** — one letter or full run on a base idea.  
+6. **Decide** — Keep one, Kill one, **Ship** one.  
 7. **Wallet** — Monad testnet → confirm `ship()`.  
 8. **Show** explorer receipt + vault `shipped` + sidebar ships list.  
-9. **Close** — offchain science system + onchain proof of shipping.
+9. **Close** — Catch → Grow → Decide → Ship, with onchain proof.
 
 ---
 
@@ -229,10 +232,10 @@ pnpm contracts:test
 
 | Field | Content |
 |---|---|
-| **Name** | Createvity |
+| **Name** | Creativity |
 | **Description** | Research-backed creativity OS + onchain ship receipts on Monad |
 | **Problem** | I know how to boost creativity but don’t run the system — ideas die unrecorded and never ship |
-| **Solution** | Protocols for capture / diverge / walk / SCAMPER / converge, plus public ShipReceipt on Monad when work goes out |
+| **Solution** | Catch · Generate · Walk · Prompt · Decide, plus public ShipReceipt on Monad when work goes out |
 | **Project URL** | *(hosted app)* |
 | **Github** | https://github.com/notcodesid/createvity-boost |
 | **Category** | Monad Testnet |
@@ -271,7 +274,7 @@ Treat popular books as inspiration; walking / structure / diverge-converge have 
 
 ## Project links
 
-A research-backed creativity OS that helps you **capture ideas without judging them**, **generate with structure** (walk + SCAMPER), then **converge and ship** — with a public **ShipReceipt** on **Monad** so work actually leaves the studio.
+A research-backed creativity OS that helps you **catch ideas without judging them**, **grow them with structure** (Generate · Walk · Prompt), then **decide and ship** — with a public **ShipReceipt** on **Monad** so work actually leaves the studio.
 
 Built for **[BuildAnything Spark](https://buildanything.so/hackathons/spark)** — *build anything onchain that solves a personal problem*.
 

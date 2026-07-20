@@ -2,7 +2,7 @@
 
 **ShipReceipt** — public, append-only proof of shipping on [Monad](https://docs.monad.xyz/).
 
-Part of Createvity Boost (Spark hack): ideas stay offchain; only ship events hit the chain.
+Part of Creativity Boost (Spark hack): ideas stay offchain; only ship events hit the chain.
 
 ## What it does
 

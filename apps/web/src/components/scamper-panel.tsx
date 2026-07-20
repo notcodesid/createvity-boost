@@ -48,7 +48,7 @@ export function ScamperPanel() {
             "",
             ...nextNotes,
             "",
-            "Generated with constrained prompts — evaluate later in Converge.",
+            "Generated with constrained prompts — evaluate later in Decide.",
           ].join("\n"),
           tags: ["scamper", "constrained"],
         });
@@ -73,13 +73,13 @@ export function ScamperPanel() {
   return (
     <div className="space-y-5">
       <ModeGuide
-        title="SCAMPER — controlled creativity"
-        science="Osborn → Eberle. Training studies show gains on fluency, flexibility, originality. When the page is blank, total freedom is often the enemy — imposed structure forces novel recombinations."
+        title="Prompt — a checklist when you’re stuck"
+        science="SCAMPER (Osborn → Eberle). When the page is blank, total freedom freezes you — simple prompts force new angles."
         how={[
           "Pick one base idea from your vault.",
           "Answer each letter without self-editing.",
           "We save the full run as a new idea.",
-          "Judge quality later in Converge — not mid-prompt.",
+          "Judge quality later in Decide — not mid-prompt.",
         ]}
       />
 
@@ -87,8 +87,8 @@ export function ScamperPanel() {
         <div className="mb-4 flex items-center gap-2">
           <Wand2 className="h-5 w-5 text-amber-deep" aria-hidden />
           <div>
-            <h2 className="font-semibold text-ink">Run SCAMPER</h2>
-            <p className="text-sm text-muted">Seven lenses. One idea. No critic.</p>
+            <h2 className="font-semibold text-ink">Run prompts</h2>
+            <p className="text-sm text-muted">Seven questions. One idea. No critic.</p>
           </div>
         </div>
 
@@ -98,7 +98,7 @@ export function ScamperPanel() {
           <div className="rounded-lg border border-dashed border-line p-6 text-center">
             <p className="font-medium text-ink">Need a base idea first</p>
             <p className="mt-1 text-sm text-muted">
-              Capture something raw, then come back here to force new combinations.
+              Catch something raw, then come back here to force new combinations.
             </p>
           </div>
         ) : (
@@ -172,13 +172,13 @@ export function ScamperPanel() {
             {finished ? (
               <div className="rounded-xl border border-sage/30 bg-sage/10 p-4">
                 <p className="font-medium text-sage">
-                  Full SCAMPER saved to your vault as a new idea.
+                  Full prompt run saved to your vault as a new idea.
                 </p>
                 <p className="mt-1 text-sm text-muted">
-                  Next: open Converge to keep, kill, or ship a public version.
+                  Next: open Decide to keep, drop, or ship a public version.
                 </p>
                 <button type="button" className="btn-ghost mt-3" onClick={reset}>
-                  Run SCAMPER again
+                  Run prompts again
                 </button>
               </div>
             ) : null}

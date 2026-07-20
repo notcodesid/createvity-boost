@@ -22,7 +22,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Createvity — Think better. Create more.",
+  title: "Creativity — Think better. Create more.",
   description: "A simple notebook to clear your mind, play fun brainstorming games to boost your creativity, and save your ideas forever.",
 };
 

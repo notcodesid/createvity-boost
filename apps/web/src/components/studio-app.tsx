@@ -26,14 +26,14 @@ import { WalkPanel } from "./walk-panel";
 import { WalletButton } from "./wallet-button";
 import { ModeGuide } from "./mode-guide";
 import { SHIP_RECEIPT_ADDRESS } from "@/lib/wagmi";
-import { LOOP_STEPS } from "@/lib/research-content";
+import { LOOP_STEPS, LOOP_STORY } from "@/lib/research-content";
 
 const MODES = [
-  { id: "capture", label: "Capture", icon: Lightbulb },
-  { id: "diverge", label: "Diverge", icon: Layers },
+  { id: "capture", label: "Catch", icon: Lightbulb },
+  { id: "diverge", label: "Generate", icon: Layers },
   { id: "walk", label: "Walk", icon: Footprints },
-  { id: "scamper", label: "SCAMPER", icon: Shuffle },
-  { id: "converge", label: "Converge", icon: Scale },
+  { id: "scamper", label: "Prompt", icon: Shuffle },
+  { id: "converge", label: "Decide", icon: Scale },
 ] as const;
 
 type Mode = (typeof MODES)[number]["id"];
@@ -49,7 +49,7 @@ export function StudioApp() {
         <header className="flex items-center justify-between border-b border-zinc-900 pb-4">
           <div className="flex items-center gap-2">
             <TurbineIcon className="h-6 w-6 text-white" />
-            <span className="font-semibold text-white text-lg tracking-tight">Createvity</span>
+            <span className="font-semibold text-white text-lg tracking-tight">Creativity</span>
           </div>
           <WalletButton />
         </header>
@@ -59,7 +59,7 @@ export function StudioApp() {
             Think better. Create more.
           </h1>
           <p className="text-xs text-zinc-500 mt-1 max-w-xl leading-relaxed">
-            A simple, private workspace to capture fragments, unlock your blockages, and select your best ideas.
+            Catch ideas, grow them (Generate · Walk · Prompt), then Decide and Ship.
           </p>
         </div>
  
@@ -95,13 +95,13 @@ export function StudioApp() {
             {mode === "capture" ? (
               <>
                 <ModeGuide
-                  title="Capture vault"
-                  science="Psychologist Robert Epstein: the bottleneck isn’t generation with age — it’s failure to record. Separate capture from critique."
+                  title="Catch — save it before it’s gone"
+                  science="Psychologist Robert Epstein: the bottleneck isn’t generation with age — it’s failure to record. Separate catching from judging."
                   how={[
                     "Dump fragments immediately — status starts raw.",
                     "Use a seed if the page feels too free.",
-                    "Do not kill or ship from this tab.",
-                    "When stuck generating, switch to Walk or SCAMPER.",
+                    "Don’t drop or ship from this tab.",
+                    "When stuck, switch to Generate, Walk, or Prompt.",
                   ]}
                 />
                 <CaptureBar />
@@ -114,7 +114,7 @@ export function StudioApp() {
                     filter="all"
                     mode="browse"
                     emptyTitle="No ideas yet — that’s the problem we fix"
-                    emptyBody="Don’t wait for a ‘good’ idea. Capture a bad one. Volume first; judgment later in Converge."
+                    emptyBody="Don’t wait for a ‘good’ idea. Catch a bad one. Volume first; judgment later in Decide."
                   />
                 </section>
               </>
@@ -164,8 +164,7 @@ export function StudioApp() {
         </div>
 
         <footer className="border-t border-line pt-4 text-center text-xs text-muted">
-          Capture → Diverge / Walk / SCAMPER → Converge → Ship. Science runs the
-          system; you run the craft.
+          {LOOP_STORY}. Five tabs. Ship is how winners leave the studio.
         </footer>
 
         <ShipModal

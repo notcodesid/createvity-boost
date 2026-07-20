@@ -1,4 +1,4 @@
-# Brand — Createvity Boost
+# Brand — Creativity Boost
 
 _Status: deferred_
 

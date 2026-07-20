@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 /// @title ShipReceipt
 /// @notice Public, append-only proof that a creator shipped work into the world.
-/// @dev Used by Createvity Boost: ideas stay offchain; only ship events hit Monad.
+/// @dev Used by Creativity Boost: ideas stay offchain; only ship events hit Monad.
 ///      Does not store private draft content — only public title, optional link, and a content hash.
 contract ShipReceipt {
     /// @notice One public ship record.

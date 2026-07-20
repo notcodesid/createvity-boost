@@ -31,12 +31,12 @@ export function ActivityGraph() {
       </div>
       <p className="mt-1.5 text-xs leading-relaxed text-zinc-400">
         {activeCount === 0
-          ? "Empty vault = capture first. Volume before quality."
+          ? "Empty vault = Catch first. Volume before quality."
           : raw > keep + shipped
-            ? `${raw} still raw — good diverge energy. Converge when the pile is large.`
+            ? `${raw} still raw — good Generate energy. Decide when the pile is large.`
             : shipCount > 0
               ? `${shipCount} shipped onchain. Klein would approve.`
-              : "Ideas alive. Walk, SCAMPER, or ship something public."}
+              : "Ideas alive. Walk, Prompt, or ship something public."}
       </p>
       <dl className="mt-3 grid grid-cols-3 gap-2 text-center text-[11px]">
         <div className="bg-zinc-950/40 border border-zinc-900 py-1.5">

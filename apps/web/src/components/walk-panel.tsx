@@ -96,13 +96,13 @@ export function WalkPanel() {
   return (
     <div className="space-y-5">
       <ModeGuide
-        title="Phone-free walk protocol"
-        science="Stanford (Oppezzo & Schwartz): walking boosts divergent creative output ~60% vs sitting — treadmill facing a blank wall still works. Effect lingers briefly after you sit. Does not help convergent ‘one right answer’ tasks."
+        title="Walk — step away, then catch"
+        science="Stanford (Oppezzo & Schwartz): walking boosts creative output ~60% vs sitting. Effect lingers briefly after you sit. Does not help ‘one right answer’ tasks."
         how={[
-          "Leave the desk when stuck generating options.",
-          "Walk without scrolling — let the Default Mode Network run.",
-          "Return and capture before email / chat.",
-          "Then — only later — evaluate in Converge.",
+          "Leave the desk when you’re stuck making more ideas.",
+          "Walk without scrolling — let your mind wander.",
+          "Return and catch ideas before email / chat.",
+          "Then — only later — evaluate in Decide.",
         ]}
       />
 
@@ -159,7 +159,7 @@ export function WalkPanel() {
               Walking. No evaluating. Ideas can wait in the fog.
             </p>
             <button type="button" className="btn-ghost mt-4" onClick={() => void finishEarly()}>
-              I&apos;m back early — capture now
+              I&apos;m back early — catch now
             </button>
           </div>
         ) : null}
@@ -167,7 +167,7 @@ export function WalkPanel() {
         {done ? (
           <form onSubmit={(e) => void saveCapture(e)} className="space-y-3">
             <div className="rounded-lg border border-sage/30 bg-sage/10 p-3 text-sm text-ink">
-              Welcome back. Capture <strong>before</strong> you open anything else.
+              Welcome back. Catch it <strong>before</strong> you open anything else.
               Residual creative boost is short.
             </div>
             <label className="label" htmlFor="walk-capture">

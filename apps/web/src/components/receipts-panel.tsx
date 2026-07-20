@@ -32,7 +32,7 @@ export function ReceiptsPanel() {
       </p>
       {receipts.length === 0 ? (
         <div className="border border-dashed border-zinc-900 p-3 text-sm text-muted">
-          None yet. When something is ready, open <strong className="text-ink">Converge</strong>{" "}
+          None yet. When something is ready, open <strong className="text-ink">Decide</strong>{" "}
           → Ship on Monad. Draft body stays private; only title + link go public.
         </div>
       ) : (

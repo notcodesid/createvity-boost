@@ -12,8 +12,8 @@ const STATUS_STYLE: Record<IdeaStatus, string> = {
 };
 
 const STATUS_HELP: Record<IdeaStatus, string> = {
-  raw: "Unjudged. Still in generation land.",
-  keep: "Worth another pass or SCAMPER.",
+  raw: "Unjudged. Still in Generate land.",
+  keep: "Worth another pass or Prompt.",
   kill: "Released. Space for better ideas.",
   shipped: "In the world. Proof on Monad.",
 };
@@ -35,7 +35,7 @@ export function IdeaList({
   onSelect,
   onShip,
   emptyTitle = "Vault is empty",
-  emptyBody = "Capture something messy above. Total freedom is often the enemy — a seed prompt helps.",
+  emptyBody = "Catch something messy above. Total freedom is often the enemy — a seed prompt helps.",
 }: Props) {
   const { data, isLoading, isError, error, refetch, isFetching } = useIdeas(filter);
   const update = useUpdateIdea();

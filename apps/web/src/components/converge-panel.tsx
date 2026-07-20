@@ -13,8 +13,8 @@ export function ConvergePanel({ onShip }: Props) {
   return (
     <div className="space-y-5">
       <ModeGuide
-        title="Converge — evaluate & ship"
-        science="Executive Control Network selects and refines. Salience network helps flag what matters. Do this only after a messy divergent pile exists. Klein: if it has value, get it into the world."
+        title="Decide — keep, drop, or ship"
+        science="This is where you evaluate — only after you’ve made a messy pile. Klein: if it has value, get it into the world."
         how={[
           "Scan raw / keep ideas with fresh eyes.",
           "Keep = still alive. Kill = ego, not energy.",
@@ -37,13 +37,13 @@ export function ConvergePanel({ onShip }: Props) {
       </div>
 
       <section>
-        <h2 className="mb-2 text-sm font-semibold text-ink">Decide</h2>
+        <h2 className="mb-2 text-sm font-semibold text-ink">Your choices</h2>
         <IdeaList
           filter="all"
           mode="converge"
           onShip={onShip}
-          emptyTitle="Nothing to evaluate"
-          emptyBody="Generate first: Capture, Walk, or SCAMPER. Coming here with an empty vault is the wrong order."
+          emptyTitle="Nothing to decide yet"
+          emptyBody="Grow first: Catch, Generate, Walk, or Prompt. Coming here with an empty vault is the wrong order."
         />
       </section>
     </div>

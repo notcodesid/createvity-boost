@@ -12,18 +12,18 @@ export function DivergePanel() {
   return (
     <div className="space-y-5">
       <ModeGuide
-        title="Diverge — generation only"
-        science="Creativity researchers frame work as toggling: divergent (many options) then convergent (select). Mixing them mid-stream activates the inner critic and kills volume. Solo ideation also beats classic group brainstorming (production blocking / anchoring)."
+        title="Generate — more ideas, no judging"
+        science="Creativity researchers frame work as toggling: many options first, then select. Mixing them mid-stream activates the inner critic and kills volume. Solo generation also beats classic group brainstorming."
         how={[
           "Use a prompt below or invent chaos.",
-          "Capture many raw ideas — quality is illegal here.",
-          "Do not open Converge until the pile feels silly-large.",
-          "Walk or SCAMPER if you stall.",
+          "Catch many raw ideas — quality is illegal here.",
+          "Don’t open Decide until the pile feels silly-large.",
+          "Walk or Prompt if you stall.",
         ]}
       />
 
       <div className="rounded-xl border border-line bg-cream p-4">
-        <p className="label">Divergent prompts</p>
+        <p className="label">Generate prompts</p>
         <div className="flex flex-wrap gap-2">
           {DIVERGE_PROMPTS.map((p) => (
             <button
@@ -47,7 +47,7 @@ export function DivergePanel() {
       </div>
 
       <CaptureBar
-        contextNote={`Diverge prompt: ${activePrompt}`}
+        contextNote={`Generate prompt: ${activePrompt}`}
         seeds={[
           "Bad idea #1 under this prompt",
           "Even worse idea",
@@ -62,7 +62,7 @@ export function DivergePanel() {
           filter="raw"
           mode="browse"
           emptyTitle="No raw ideas yet"
-          emptyBody="Divergent mode only shows unjudged ideas. Capture freely — Keep/Kill lives in Converge."
+          emptyBody="Generate only shows unjudged ideas. Catch freely — Keep/Drop lives in Decide."
         />
       </section>
     </div>

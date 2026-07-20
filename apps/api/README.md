@@ -1,6 +1,6 @@
 # @createvity/api
 
-Offchain backend for Createvity Boost.
+Offchain backend for Creativity Boost.
 
 - **Ideas** (capture vault)
 - **Sessions** (diverge / converge / walk / scamper)

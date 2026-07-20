@@ -1,4 +1,4 @@
-/** Monad + ShipReceipt config for Createvity Boost. */
+/** Monad + ShipReceipt config for Creativity Boost. */
 
 export const MONAD_TESTNET = {
   id: 10143,

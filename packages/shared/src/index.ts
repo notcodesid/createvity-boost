@@ -1,4 +1,4 @@
-/** Shared domain types for Createvity Boost (web + api). */
+/** Shared domain types for Creativity Boost (web + api). */
 
 export const IDEA_STATUSES = ["raw", "keep", "kill", "shipped"] as const;
 export type IdeaStatus = (typeof IDEA_STATUSES)[number];

@@ -18,10 +18,11 @@ export function LandingPage() {
 
       {/* Header */}
       <header className="sticky top-0 z-40 bg-[#030303]/80 backdrop-blur-md">
-        <div className="w-full px-[30px] h-16 flex items-center justify-between">
-          {/* Left: Minimal Turbine Logo Icon */}
-          <div className="flex items-center">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          {/* Left: Minimal Turbine Logo Icon & Name */}
+          <div className="flex items-center gap-2.5">
             <TurbineIcon className="h-[35px] w-[35px] text-white" />
+            <span className="font-semibold text-white text-lg tracking-tight">Creativity</span>
           </div>
 
           {/* Right: Navigation & Auth matching Midday.ai screenshot exactly */}
@@ -95,8 +96,8 @@ export function LandingPage() {
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-zinc-800/10 via-zinc-900/10 to-zinc-800/10 opacity-30 blur-2xl transition duration-1000 group-hover:opacity-40" />
             <div className="relative rounded-2xl border border-zinc-900 bg-zinc-950 p-2 shadow-2xl">
               <Image
-                src="/images/createvity-mockup.jpg"
-                alt="Createvity App Dashboard Mockup"
+                src="/images/createvity-mockup.png"
+                alt="Creativity App Dashboard Mockup"
                 width={1000}
                 height={563}
                 priority
@@ -115,57 +116,57 @@ export function LandingPage() {
               How it works
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-white leading-tight">
-              Write ideas. Improve them. Share when done.
+              Catch → Grow → Decide → Ship
             </h2>
             <p className="mt-4 text-zinc-500 text-sm sm:text-base leading-relaxed font-sans max-w-2xl mx-auto">
-              A simple path from a messy thought to finished work — without losing ideas or sharing private notes.
+              Five tabs. Save ideas, grow them three ways, pick winners, then ship — private notes stay private.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {/* Bento Block 1: Capture */}
+            {/* Bento Block 1: Catch */}
             <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
-              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">01. Capture</span>
-              <h3 className="text-[20px] font-semibold text-white leading-snug">Write it down</h3>
+              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">01. Catch</span>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Save the idea</h3>
               <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
-                Type a short title and any notes. Ideas save to your account so you don’t forget them.
+                Write it down before it disappears. Messy is fine — judge later.
               </p>
             </div>
 
-            {/* Bento Block 2: Diverge */}
+            {/* Bento Block 2: Generate */}
             <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
-              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">02. Make more</span>
-              <h3 className="text-[20px] font-semibold text-white leading-snug">Add freely</h3>
+              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">02. Generate</span>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Make more ideas</h3>
               <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
-                Keep adding ideas without judging. No deleting or picking winners yet — just get thoughts out.
+                Add freely with no judging. Volume first — quality comes in Decide.
               </p>
             </div>
 
             {/* Bento Block 3: Walk */}
             <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
               <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">03. Walk</span>
-              <h3 className="text-[20px] font-semibold text-white leading-snug">Take a walk</h3>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Step away</h3>
               <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
-                Start a timer, put the phone down, walk around. When you’re back, write what came to mind.
+                Start a timer, put the phone down, walk. When you’re back, catch what came up.
               </p>
             </div>
 
-            {/* Bento Block 4: SCAMPER */}
+            {/* Bento Block 4: Prompt */}
             <div className="rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 relative overflow-hidden group">
-              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">04. Stretch</span>
-              <h3 className="text-[20px] font-semibold text-white leading-snug">Ask better questions</h3>
+              <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">04. Prompt</span>
+              <h3 className="text-[20px] font-semibold text-white leading-snug">Use a checklist</h3>
               <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans">
-                Pick one idea and answer simple prompts: What could you swap? Combine? Cut? You’ll find new angles.
+                Stuck? Pick one idea and answer simple questions — swap, combine, cut — to find new angles.
               </p>
             </div>
 
-            {/* Bento Block 5: Converge + Ship */}
+            {/* Bento Block 5: Decide + Ship */}
             <div className="md:col-span-2 rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative overflow-hidden group">
               <div className="space-y-1">
-                <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">05. Finish</span>
-                <h3 className="text-[20px] font-semibold text-white leading-snug">Keep, drop, or share</h3>
+                <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">05. Decide</span>
+                <h3 className="text-[20px] font-semibold text-white leading-snug">Keep, drop, or ship</h3>
                 <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans max-w-md">
-                  Go through your list. Keep the good ones, drop the weak ones, or share a short public note when something is done. Your private notes stay private.
+                  Choose what lives. Ship winners with a public receipt — private notes stay private.
                 </p>
               </div>
               <div className="shrink-0 font-serif font-normal text-[48px] sm:text-[64px] text-zinc-200 opacity-90 leading-none select-none tracking-tight sm:pr-4">
@@ -196,7 +197,7 @@ export function LandingPage() {
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <TurbineIcon className="h-5 w-5 text-white" />
-            <span className="font-semibold text-white text-sm">Createvity</span>
+            <span className="font-semibold text-white text-sm">Creativity</span>
           </div>
           <div className="text-[11px] text-zinc-600">
             Open Source under MIT License

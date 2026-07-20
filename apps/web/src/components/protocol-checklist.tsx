@@ -44,7 +44,7 @@ export function ProtocolChecklist({ onGo }: Props) {
         </span>
       </div>
       <p className="mb-4 text-sm text-muted">
-        Run the science once end-to-end. Not a streak app — a complete loop.
+        Catch → Generate · Walk · Prompt → Decide → Ship. Run it once end-to-end.
       </p>
       <ul className="space-y-2">
         {FIRST_RUN.map((step, i) => {
@@ -71,7 +71,7 @@ export function ProtocolChecklist({ onGo }: Props) {
       </ul>
       {rawCount > 0 && completed < FIRST_RUN.length ? (
         <p className="mt-3 text-xs text-muted">
-          You have {rawCount} raw idea{rawCount === 1 ? "" : "s"} waiting for converge.
+          You have {rawCount} raw idea{rawCount === 1 ? "" : "s"} waiting in Decide.
         </p>
       ) : null}
     </section>

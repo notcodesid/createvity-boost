@@ -1,6 +1,6 @@
 # @createvity/web
 
-Next.js frontend for Createvity Boost.
+Next.js frontend for Creativity Boost.
 
 ## Run
 
