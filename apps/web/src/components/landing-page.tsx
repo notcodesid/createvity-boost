@@ -116,10 +116,10 @@ export function LandingPage() {
               How it works
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-white leading-tight">
-              Catch → Grow → Decide → Ship
+              Catch → Grow → Decide
             </h2>
             <p className="mt-4 text-zinc-500 text-sm sm:text-base leading-relaxed font-sans max-w-2xl mx-auto">
-              Five tabs. Save ideas, grow them three ways, pick winners, then ship — private notes stay private.
+              Five tabs. Save ideas, grow them three ways, pick winners — private notes stay private.
             </p>
           </div>
 
@@ -160,35 +160,20 @@ export function LandingPage() {
               </p>
             </div>
 
-            {/* Bento Block 5: Decide + Ship */}
+            {/* Bento Block 5: Decide */}
             <div className="md:col-span-2 rounded-none border border-zinc-900 bg-zinc-950/40 p-6 hover:border-zinc-800 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative overflow-hidden group">
               <div className="space-y-1">
                 <span className="text-[12px] text-zinc-500 font-sans tracking-wide block mb-1">05. Decide</span>
-                <h3 className="text-[20px] font-semibold text-white leading-snug">Keep, drop, or ship</h3>
+                <h3 className="text-[20px] font-semibold text-white leading-snug">Keep or drop</h3>
                 <p className="mt-3 text-[13px] text-zinc-500 leading-relaxed font-sans max-w-md">
-                  Choose what lives. Ship winners with a public receipt — private notes stay private.
+                  Choose what lives. Keep the ones with energy, drop the rest.
                 </p>
               </div>
               <div className="shrink-0 font-serif font-normal text-[48px] sm:text-[64px] text-zinc-200 opacity-90 leading-none select-none tracking-tight sm:pr-4">
-                Ship it
+                Decide
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Proof Section - Simple and Non-Technical */}
-      <section className="py-20 border-t border-zinc-900 bg-[#030303]">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-[13px] font-sans font-medium text-zinc-500 uppercase tracking-widest block mb-3">
-            Digital Proof
-          </span>
-          <h2 className="text-3xl sm:text-[40px] font-serif font-normal tracking-tight text-white leading-tight">
-            Prove you thought of it first.
-          </h2>
-          <p className="mt-6 text-zinc-500 text-sm sm:text-base leading-relaxed font-sans max-w-2xl mx-auto">
-            When you complete an idea, you can create a public digital receipt. It acts like a secure, timestamped stamp in a registry book. Anyone can verify that you owned that idea at that exact moment, while your raw drafts and personal notes stay 100% private to you.
-          </p>
         </div>
       </section>
 

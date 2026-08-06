@@ -1,17 +1,11 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
-import {
-  MONAD_TESTNET,
-  SHIP_RECEIPT_ADDRESS,
-  SHIP_RECEIPT_CHAIN_ID,
-} from "@createvity/chain";
 import { getClientId, getUser, requireClientId, type AppVariables } from "./middleware.js";
 import { mapUser } from "./mappers.js";
 import { ideasRouter } from "./routes/ideas.js";
 import { sessionsRouter } from "./routes/sessions.js";
 import { profileRouter } from "./routes/profile.js";
-import { receiptsRouter } from "./routes/receipts.js";
 import { usersRouter } from "./routes/users.js";
 
 export function createApp() {
@@ -38,20 +32,6 @@ export function createApp() {
         provider: "google",
         secretConfigured: Boolean(process.env.AUTH_SECRET),
       },
-      shipReceipt: {
-        address: SHIP_RECEIPT_ADDRESS,
-        chainId: SHIP_RECEIPT_CHAIN_ID,
-      },
-    }),
-  );
-
-  app.get("/receipts/contract", (c) =>
-    c.json({
-      address: SHIP_RECEIPT_ADDRESS,
-      chainId: SHIP_RECEIPT_CHAIN_ID,
-      network: MONAD_TESTNET.name,
-      rpc: MONAD_TESTNET.rpcUrls.default.http[0],
-      explorer: `${MONAD_TESTNET.blockExplorers.default.url}/address/${SHIP_RECEIPT_ADDRESS}`,
     }),
   );
 
@@ -72,7 +52,6 @@ export function createApp() {
   api.route("/ideas", ideasRouter);
   api.route("/sessions", sessionsRouter);
   api.route("/profile", profileRouter);
-  api.route("/receipts", receiptsRouter);
 
   app.route("/api", api);
 

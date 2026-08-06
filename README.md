@@ -39,6 +39,6 @@ Replace the line above with something like:
 
 ## For builders
 
-Setup, stack, contracts, local run, contribution, and everything else lives here:
+Setup, stack, local run, contribution, and everything else lives here:
 
 → **[Developer guide](./docs/DEVELOPERS.md)**

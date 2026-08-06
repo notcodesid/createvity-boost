@@ -9,7 +9,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@createvity/chain": "workspace:*",
     "@createvity/shared": "workspace:*",
     "@hono/node-server": "^1.14.1",
     "@privy-io/server-auth": "^1.32.5",

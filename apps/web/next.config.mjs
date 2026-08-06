@@ -5,7 +5,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@createvity/shared", "@createvity/chain"],
+  transpilePackages: ["@createvity/shared"],
   outputFileTracingRoot: path.join(__dirname, "../.."),
 };
 

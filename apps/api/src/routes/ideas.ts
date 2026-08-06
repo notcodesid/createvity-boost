@@ -6,7 +6,6 @@ import { getClientId, type AppVariables } from "../middleware.js";
 import {
   createIdeaSchema,
   listIdeasQuerySchema,
-  shipMetaSchema,
   updateIdeaSchema,
 } from "../schemas.js";
 
@@ -138,54 +137,4 @@ ideasRouter.delete("/:id", async (c) => {
 
   if (changes === 0) return c.json({ error: "Idea not found" }, 404);
   return c.json({ ok: true });
-});
-
-/**
- * Attach ship result after the client successfully posts a public ship receipt.
- * Backend never holds private keys — wallet tx happens in the browser.
- */
-ideasRouter.post("/:id/ship-meta", async (c) => {
-  const clientId = getClientId(c);
-  const id = c.req.param("id");
-  const existing = await queryOne<IdeaRow>(
-    `SELECT * FROM ideas WHERE id = $1 AND client_id = $2`,
-    [id, clientId],
-  );
-  if (!existing) return c.json({ error: "Idea not found" }, 404);
-
-  const body = await c.req.json().catch(() => null);
-  const parsed = shipMetaSchema.safeParse(body);
-  if (!parsed.success) {
-    return c.json({ error: "Invalid body", details: parsed.error.flatten() }, 400);
-  }
-
-  const now = Date.now();
-  const data = parsed.data;
-
-  await execute(
-    `UPDATE ideas SET
-       status = 'shipped',
-       ship_tx_hash = $1,
-       ship_receipt_id = $2,
-       ship_title = $3,
-       ship_link = $4,
-       content_hash = $5,
-       wallet_address = $6,
-       updated_at = $7
-     WHERE id = $8 AND client_id = $9`,
-    [
-      data.shipTxHash,
-      data.shipReceiptId,
-      data.shipTitle,
-      data.shipLink || null,
-      data.contentHash,
-      data.walletAddress.toLowerCase(),
-      now,
-      id,
-      clientId,
-    ],
-  );
-
-  const row = await queryOne<IdeaRow>(`SELECT * FROM ideas WHERE id = $1`, [id]);
-  return c.json({ idea: mapIdea(row!) });
 });

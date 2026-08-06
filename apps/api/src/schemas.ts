@@ -17,21 +17,6 @@ export const updateIdeaSchema = z
   })
   .refine((v) => Object.keys(v).length > 0, { message: "At least one field required" });
 
-export const shipMetaSchema = z.object({
-  shipTxHash: z
-    .string()
-    .regex(/^0x[a-fA-F0-9]{64}$/, "Invalid tx hash"),
-  shipReceiptId: z.string().regex(/^\d+$/, "Receipt id must be a numeric string"),
-  shipTitle: z.string().trim().min(1).max(500),
-  shipLink: z.string().max(2000).optional().default(""),
-  contentHash: z
-    .string()
-    .regex(/^0x[a-fA-F0-9]{64}$/, "Invalid content hash"),
-  walletAddress: z
-    .string()
-    .regex(/^0x[a-fA-F0-9]{40}$/, "Invalid wallet address"),
-});
-
 export const createSessionSchema = z.object({
   type: z.enum(SESSION_TYPES),
   ideaId: z.string().uuid().optional(),
@@ -51,11 +36,6 @@ export const updateProfileSchema = z
   .object({
     successDefinition: z.string().max(2000).optional(),
     tenYearDream: z.string().max(5000).optional(),
-    walletAddress: z
-      .string()
-      .regex(/^0x[a-fA-F0-9]{40}$/)
-      .optional()
-      .or(z.literal("")),
   })
   .refine((v) => Object.keys(v).length > 0, { message: "At least one field required" });
 

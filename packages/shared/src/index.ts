@@ -1,6 +1,6 @@
 /** Shared domain types for Creativity Boost (web + api). */
 
-export const IDEA_STATUSES = ["raw", "keep", "kill", "shipped"] as const;
+export const IDEA_STATUSES = ["raw", "keep", "kill"] as const;
 export type IdeaStatus = (typeof IDEA_STATUSES)[number];
 
 export const SESSION_TYPES = ["diverge", "converge", "walk", "scamper"] as const;
@@ -15,13 +15,6 @@ export interface Idea {
   tags: string[];
   createdAt: number;
   updatedAt: number;
-  /** Onchain ship metadata (filled after wallet ship succeeds). */
-  shipTxHash?: string | null;
-  shipReceiptId?: string | null;
-  shipLink?: string | null;
-  shipTitle?: string | null;
-  contentHash?: string | null;
-  walletAddress?: string | null;
 }
 
 export interface Session {
@@ -39,7 +32,6 @@ export interface Profile {
   clientId: string;
   successDefinition?: string | null;
   tenYearDream?: string | null;
-  walletAddress?: string | null;
   updatedAt: number;
 }
 
@@ -54,15 +46,6 @@ export interface User {
   createdAt: number;
   updatedAt: number;
   lastSeenAt: number;
-}
-
-export interface ShipMetaInput {
-  shipTxHash: string;
-  shipReceiptId: string;
-  shipTitle: string;
-  shipLink?: string;
-  contentHash: string;
-  walletAddress: string;
 }
 
 export interface CreateIdeaInput {
@@ -95,5 +78,4 @@ export interface UpdateSessionInput {
 export interface UpdateProfileInput {
   successDefinition?: string;
   tenYearDream?: string;
-  walletAddress?: string;
 }

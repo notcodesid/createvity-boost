@@ -32,7 +32,6 @@ export function useUpdateIdea() {
       api.updateIdea(id, body),
     onSuccess: () => {
       void qc.invalidateQueries({ queryKey: ["ideas"] });
-      void qc.invalidateQueries({ queryKey: ["receipts"] });
     },
   });
 }
@@ -44,15 +43,6 @@ export function useDeleteIdea() {
     onSuccess: () => {
       void qc.invalidateQueries({ queryKey: ["ideas"] });
     },
-  });
-}
-
-export function useReceipts() {
-  const { user, accessToken } = useSession();
-  return useQuery({
-    queryKey: ["receipts", user?.id],
-    enabled: Boolean(user && accessToken),
-    queryFn: () => api.listReceipts(),
   });
 }
 

@@ -4,7 +4,6 @@ import type {
   Idea,
   Profile,
   Session,
-  ShipMetaInput,
   UpdateIdeaInput,
   UpdateProfileInput,
   UpdateSessionInput,
@@ -48,12 +47,7 @@ async function request<T>(
 }
 
 export const api = {
-  health: () =>
-    request<{ ok: boolean; shipReceipt: { address: string; chainId: number } }>(
-      "/health",
-      {},
-      false,
-    ),
+  health: () => request<{ ok: boolean }>("/health", {}, false),
 
   listIdeas: (params?: { status?: string; q?: string }) => {
     const sp = new URLSearchParams();
@@ -80,12 +74,6 @@ export const api = {
   deleteIdea: (id: string) =>
     request<{ ok: boolean }>(`/api/ideas/${id}`, { method: "DELETE" }),
 
-  shipMeta: (id: string, body: ShipMetaInput) =>
-    request<{ idea: Idea }>(`/api/ideas/${id}/ship-meta`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
-
   listSessions: () => request<{ sessions: Session[] }>("/api/sessions"),
 
   createSession: (body: CreateSessionInput) =>
@@ -107,19 +95,6 @@ export const api = {
       method: "PUT",
       body: JSON.stringify(body),
     }),
-
-  listReceipts: () =>
-    request<{
-      contract: { address: string; chainId: number; explorer: string };
-      receipts: Array<{
-        ideaId: string;
-        shipTitle: string;
-        shipTxHash: string;
-        shipReceiptId: string | null;
-        explorerTxUrl: string | null;
-        shippedAt: number;
-      }>;
-    }>("/api/receipts"),
 
   me: () =>
     request<{ user: User; userId: string; email: string; auth: string }>(

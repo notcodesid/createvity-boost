@@ -6,10 +6,9 @@ See conversation notes for full plan. Short version:
 
 1. Idea capture
 2. Diverge / Converge modes
-3. Ship → Monad `ShipReceipt`
-4. Walk protocol
-5. SCAMPER (one technique)
-6. Hosted app + demo video + contract address
+3. Walk protocol
+4. SCAMPER (one technique)
+5. Hosted app + demo video
 
 ## Cut
 
@@ -17,7 +16,3 @@ See conversation notes for full plan. Short version:
 - AI generation
 - Team features
 - Full content library
-
-## Onchain
-
-Only ship receipts. Ideas stay offchain.

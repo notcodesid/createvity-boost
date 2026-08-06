@@ -19,7 +19,6 @@ profileRouter.get("/", async (c) => {
         clientId,
         successDefinition: null,
         tenYearDream: null,
-        walletAddress: null,
         updatedAt: Date.now(),
       },
     });
@@ -45,23 +44,15 @@ profileRouter.put("/", async (c) => {
   const successDefinition =
     parsed.data.successDefinition ?? existing?.success_definition ?? null;
   const tenYearDream = parsed.data.tenYearDream ?? existing?.ten_year_dream ?? null;
-  let walletAddress = existing?.wallet_address ?? null;
-  if (parsed.data.walletAddress !== undefined) {
-    walletAddress =
-      parsed.data.walletAddress === ""
-        ? null
-        : parsed.data.walletAddress.toLowerCase();
-  }
 
   await execute(
-    `INSERT INTO profiles (client_id, success_definition, ten_year_dream, wallet_address, updated_at)
-     VALUES ($1, $2, $3, $4, $5)
+    `INSERT INTO profiles (client_id, success_definition, ten_year_dream, updated_at)
+     VALUES ($1, $2, $3, $4)
      ON CONFLICT (client_id) DO UPDATE SET
        success_definition = EXCLUDED.success_definition,
        ten_year_dream = EXCLUDED.ten_year_dream,
-       wallet_address = EXCLUDED.wallet_address,
        updated_at = EXCLUDED.updated_at`,
-    [clientId, successDefinition, tenYearDream, walletAddress, now],
+    [clientId, successDefinition, tenYearDream, now],
   );
 
   const row = await queryOne<ProfileRow>(

@@ -3,8 +3,7 @@
 ## Principle
 
 - Creativity system = **offchain** (capture, walk, SCAMPER, diverge/converge)
-- Ship proof = **onchain** (Monad `ShipReceipt`)
-- Backend = **optional** (local-first for Spark MVP)
+- Backend = **optional** (local-first for MVP)
 
 ## Domains
 
@@ -12,23 +11,14 @@
 |-----------|--------------|
 | Ideas     | Offchain     |
 | Sessions  | Offchain     |
-| Ship      | Client + chain |
-| Receipts  | Chain + local cache |
-
-## Ship flow
-
-1. User marks idea → Ship (public title + optional link)
-2. Client computes content hash
-3. Wallet calls `ship(title, link, contentHash)`
-4. Idea status → `shipped`; store tx hash + receipt id
+| Profile   | Offchain     |
 
 ## Repo model
 
-Single monorepo: `apps/web` + `apps/api` + `contracts` + `packages/*`.
+Single monorepo: `apps/web` + `apps/api` + `packages/*`.
 
 ## Backend
 
-- **Stack:** Hono + better-sqlite3 + Zod
-- **Auth:** `X-Client-Id` header (stable browser UUID)
-- **Onchain:** client signs `ShipReceipt.ship()`; API only stores ship meta after success
+- **Stack:** Hono + Postgres (Supabase) + Zod
+- **Auth:** Privy session token (Google / email / X) → `Authorization` header
 - **Run:** `pnpm dev:api` → `http://localhost:8787`

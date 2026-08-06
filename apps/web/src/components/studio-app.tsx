@@ -1,7 +1,5 @@
 "use client";
 
-import { useQueryClient } from "@tanstack/react-query";
-import type { Idea } from "@createvity/shared";
 import {
   Footprints,
   Layers,
@@ -16,11 +14,8 @@ import { CaptureBar } from "./capture-bar";
 import { ConvergePanel } from "./converge-panel";
 import { DivergePanel } from "./diverge-panel";
 import { IdeaList } from "./idea-list";
-import { ReceiptsPanel } from "./receipts-panel";
 import { ScamperPanel } from "./scamper-panel";
-import { ShipModal } from "./ship-modal";
 import { WalkPanel } from "./walk-panel";
-import { WalletButton } from "./wallet-button";
 
 const MODES = [
   { id: "capture", label: "Catch", icon: Lightbulb },
@@ -34,8 +29,6 @@ type Mode = (typeof MODES)[number]["id"];
 
 export function StudioApp() {
   const [mode, setMode] = useState<Mode>("capture");
-  const [shipIdea, setShipIdea] = useState<Idea | null>(null);
-  const qc = useQueryClient();
 
   return (
     <AuthGate>
@@ -47,7 +40,6 @@ export function StudioApp() {
               Createvity
             </span>
           </div>
-          <WalletButton />
         </header>
 
         <nav
@@ -95,27 +87,13 @@ export function StudioApp() {
             {mode === "diverge" ? <DivergePanel /> : null}
             {mode === "walk" ? <WalkPanel /> : null}
             {mode === "scamper" ? <ScamperPanel /> : null}
-            {mode === "converge" ? (
-              <ConvergePanel onShip={(idea) => setShipIdea(idea)} />
-            ) : null}
+            {mode === "converge" ? <ConvergePanel /> : null}
           </main>
 
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <ActivityGraph />
-            <hr className="border-zinc-900" />
-            <ReceiptsPanel />
           </aside>
         </div>
-
-        <ShipModal
-          idea={shipIdea}
-          open={!!shipIdea}
-          onClose={() => setShipIdea(null)}
-          onShipped={() => {
-            void qc.invalidateQueries({ queryKey: ["ideas"] });
-            void qc.invalidateQueries({ queryKey: ["receipts"] });
-          }}
-        />
       </div>
     </AuthGate>
   );

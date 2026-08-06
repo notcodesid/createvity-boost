@@ -1,17 +1,15 @@
 "use client";
 
-import { useIdeas, useReceipts } from "@/hooks/use-ideas";
+import { useIdeas } from "@/hooks/use-ideas";
 
 export function ActivityGraph() {
   const { data } = useIdeas("all");
-  const { data: ships } = useReceipts();
   const ideas = data?.ideas ?? [];
 
   const raw = ideas.filter((i) => i.status === "raw").length;
   const keep = ideas.filter((i) => i.status === "keep").length;
-  const shipped = ideas.filter((i) => i.status === "shipped").length;
+  const kill = ideas.filter((i) => i.status === "kill").length;
   const activeCount = ideas.filter((i) => i.status !== "kill").length;
-  const shipCount = ships?.receipts?.length ?? shipped;
 
   return (
     <div className="py-1">
@@ -34,8 +32,8 @@ export function ActivityGraph() {
           <dd className="font-semibold tabular-nums text-white">{keep}</dd>
         </div>
         <div className="border border-zinc-900 bg-zinc-950/40 py-1.5">
-          <dt className="text-zinc-500">Shipped</dt>
-          <dd className="font-semibold tabular-nums text-white">{shipCount}</dd>
+          <dt className="text-zinc-500">Kill</dt>
+          <dd className="font-semibold tabular-nums text-white">{kill}</dd>
         </div>
       </dl>
     </div>

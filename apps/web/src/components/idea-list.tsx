@@ -1,21 +1,19 @@
 "use client";
 
 import type { Idea, IdeaStatus } from "@createvity/shared";
-import { ExternalLink, Rocket, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { useDeleteIdea, useIdeas, useUpdateIdea } from "@/hooks/use-ideas";
 
 const STATUS_STYLE: Record<IdeaStatus, string> = {
   raw: "bg-paper-muted text-muted",
   keep: "bg-sage/15 text-sage",
   kill: "bg-ink/10 text-muted line-through",
-  shipped: "bg-amber/20 text-amber-deep",
 };
 
 const STATUS_HELP: Record<IdeaStatus, string> = {
   raw: "Not decided yet",
   keep: "Keeping this one",
   kill: "Dropped",
-  shipped: "Shipped onchain",
 };
 
 type Props = {
@@ -23,7 +21,6 @@ type Props = {
   mode?: "browse" | "converge";
   selectedId?: string | null;
   onSelect?: (idea: Idea) => void;
-  onShip?: (idea: Idea) => void;
   emptyTitle?: string;
   emptyBody?: string;
 };
@@ -33,7 +30,6 @@ export function IdeaList({
   mode = "browse",
   selectedId,
   onSelect,
-  onShip,
   emptyTitle = "No ideas yet",
   emptyBody = "Catch one above.",
 }: Props) {
@@ -119,7 +115,7 @@ export function IdeaList({
                 </p>
               ) : null}
 
-              {mode === "converge" && idea.status !== "shipped" ? (
+              {mode === "converge" ? (
                 <div
                   className="mt-3 flex flex-wrap gap-2 border-t border-line pt-3"
                   onClick={(e) => e.stopPropagation()}
@@ -143,14 +139,6 @@ export function IdeaList({
                   </button>
                   <button
                     type="button"
-                    className="btn-accent text-xs"
-                    onClick={() => onShip?.(idea)}
-                  >
-                    <Rocket className="h-3.5 w-3.5" aria-hidden />
-                    Ship
-                  </button>
-                  <button
-                    type="button"
                     className="btn-danger text-xs"
                     disabled={del.isPending}
                     onClick={() => {
@@ -161,19 +149,6 @@ export function IdeaList({
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
                 </div>
-              ) : null}
-
-              {idea.status === "shipped" && idea.shipTxHash ? (
-                <a
-                  href={`https://testnet.monadvision.com/tx/${idea.shipTxHash}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-amber-deep underline-offset-2 hover:underline focus-ring rounded"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  View ship
-                  <ExternalLink className="h-3 w-3" aria-hidden />
-                </a>
               ) : null}
             </article>
           </li>

@@ -38,12 +38,6 @@ export function mapIdea(row: IdeaRow): Idea {
     tags,
     createdAt: num(row.created_at),
     updatedAt: num(row.updated_at),
-    shipTxHash: row.ship_tx_hash,
-    shipReceiptId: row.ship_receipt_id,
-    shipLink: row.ship_link,
-    shipTitle: row.ship_title,
-    contentHash: row.content_hash,
-    walletAddress: row.wallet_address,
   };
 }
 
@@ -74,7 +68,6 @@ export function mapProfile(row: ProfileRow): Profile {
     clientId: row.client_id,
     successDefinition: row.success_definition,
     tenYearDream: row.ten_year_dream,
-    walletAddress: row.wallet_address,
     updatedAt: num(row.updated_at),
   };
 }

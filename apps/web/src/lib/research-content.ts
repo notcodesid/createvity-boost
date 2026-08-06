@@ -28,14 +28,13 @@ export const LOOP_STEPS = [
   {
     id: "converge",
     title: "Decide",
-    blurb: "Keep, drop, or ship.",
+    blurb: "Keep or drop.",
     science: "Executive network evaluates — never during generation.",
   },
 ] as const;
 
-/** Story line: Catch → Grow → Decide → Ship. Grow = Generate · Walk · Prompt. */
-export const LOOP_STORY =
-  "Catch → Generate · Walk · Prompt → Decide → Ship";
+/** Story line: Catch → Grow → Decide. Grow = Generate · Walk · Prompt. */
+export const LOOP_STORY = "Catch → Generate · Walk · Prompt → Decide";
 
 export const CAPTURE_SEEDS = [
   "What if we removed the hardest requirement?",
@@ -120,21 +119,17 @@ export const CONVERGE_RUBRIC = [
     action: "Kill",
     when: "You’re clinging from ego, not energy. Let it go.",
   },
-  {
-    action: "Ship",
-    when: "Someone else could get value from a public version today.",
-  },
 ] as const;
 
 export const SUCCESS_EXAMPLES = [
-  "Ship one real thing every week",
+  "Finish one real thing every week",
   "Make something people finish using",
   "Be known for honest craft, not volume",
   "Help 100 people think clearer",
 ];
 
 export const DREAM_EXAMPLES = [
-  "A studio that funds itself from shipped work",
+  "A studio that funds itself from finished work",
   "People cite my systems, not just my outputs",
   "Creative practice that doesn’t require suffering",
 ];
@@ -151,5 +146,5 @@ export const FIRST_RUN = [
   { id: 2, text: "Catch 3 messy ideas (no judging)", mode: "capture" as const },
   { id: 3, text: "Do one phone-free walk, then catch what came up", mode: "walk" as const },
   { id: 4, text: "Run Prompt on your favorite raw idea", mode: "scamper" as const },
-  { id: 5, text: "Decide: keep / drop, then ship one", mode: "converge" as const },
+  { id: 5, text: "Decide: keep one, drop the rest", mode: "converge" as const },
 ];

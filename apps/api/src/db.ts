@@ -74,13 +74,7 @@ export async function migrate() {
       status TEXT NOT NULL DEFAULT 'raw',
       tags_json TEXT NOT NULL DEFAULT '[]',
       created_at BIGINT NOT NULL,
-      updated_at BIGINT NOT NULL,
-      ship_tx_hash TEXT,
-      ship_receipt_id TEXT,
-      ship_link TEXT,
-      ship_title TEXT,
-      content_hash TEXT,
-      wallet_address TEXT
+      updated_at BIGINT NOT NULL
     );
 
     CREATE INDEX IF NOT EXISTS idx_ideas_client ON ideas(client_id);
@@ -105,7 +99,6 @@ export async function migrate() {
       client_id TEXT PRIMARY KEY,
       success_definition TEXT,
       ten_year_dream TEXT,
-      wallet_address TEXT,
       updated_at BIGINT NOT NULL
     );
   `);
@@ -178,12 +171,6 @@ export type IdeaRow = {
   tags_json: string;
   created_at: string | number;
   updated_at: string | number;
-  ship_tx_hash: string | null;
-  ship_receipt_id: string | null;
-  ship_link: string | null;
-  ship_title: string | null;
-  content_hash: string | null;
-  wallet_address: string | null;
 };
 
 export type SessionRow = {
@@ -201,6 +188,5 @@ export type ProfileRow = {
   client_id: string;
   success_definition: string | null;
   ten_year_dream: string | null;
-  wallet_address: string | null;
   updated_at: string | number;
 };

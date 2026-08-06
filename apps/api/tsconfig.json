@@ -12,8 +12,7 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@createvity/shared": ["../../packages/shared/src/index.ts"],
-      "@createvity/chain": ["../../packages/chain/src/index.ts"]
+      "@createvity/shared": ["../../packages/shared/src/index.ts"]
     }
   },
   "include": ["src/**/*"]

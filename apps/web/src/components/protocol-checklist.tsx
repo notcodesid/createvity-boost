@@ -1,6 +1,6 @@
 "use client";
 
-import { useIdeas, useProfile, useReceipts } from "@/hooks/use-ideas";
+import { useIdeas, useProfile } from "@/hooks/use-ideas";
 import { FIRST_RUN } from "@/lib/research-content";
 import { CheckCircle2, Circle } from "lucide-react";
 
@@ -13,7 +13,6 @@ type Props = {
 export function ProtocolChecklist({ onGo }: Props) {
   const { data: ideasData } = useIdeas("all");
   const { data: profileData } = useProfile();
-  const { data: receiptsData } = useReceipts();
 
   const ideas = ideasData?.ideas ?? [];
   const rawCount = ideas.filter((i) => i.status === "raw").length;
@@ -22,7 +21,7 @@ export function ProtocolChecklist({ onGo }: Props) {
   const hasScamper = ideas.some(
     (i) => i.tags?.includes("scamper") || i.title.startsWith("SCAMPER:"),
   );
-  const hasShip = (receiptsData?.receipts?.length ?? 0) > 0;
+  const hasKept = ideas.some((i) => i.status === "keep");
   const captureCount = ideas.length;
 
   const done = [
@@ -30,7 +29,7 @@ export function ProtocolChecklist({ onGo }: Props) {
     captureCount >= 3,
     hasWalk,
     hasScamper,
-    hasShip || ideas.some((i) => i.status === "shipped"),
+    hasKept,
   ];
 
   const completed = done.filter(Boolean).length;
@@ -44,7 +43,7 @@ export function ProtocolChecklist({ onGo }: Props) {
         </span>
       </div>
       <p className="mb-4 text-sm text-muted">
-        Catch → Generate · Walk · Prompt → Decide → Ship. Run it once end-to-end.
+        Catch → Generate · Walk · Prompt → Decide. Run it once end-to-end.
       </p>
       <ul className="space-y-2">
         {FIRST_RUN.map((step, i) => {

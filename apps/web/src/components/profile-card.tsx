@@ -64,7 +64,7 @@ export function ProfileCard() {
         className="input mb-2"
         value={success}
         onChange={(e) => setSuccess(e.target.value)}
-        placeholder="e.g. Ship one real thing every week"
+        placeholder="e.g. Finish one real thing every week"
         maxLength={2000}
       />
       <div className="mb-3 flex flex-wrap gap-1.5">
