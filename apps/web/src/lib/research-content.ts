@@ -142,9 +142,8 @@ export const INPUT_DIET = [
 ] as const;
 
 export const FIRST_RUN = [
-  { id: 1, text: "Write your definition of success (sidebar)", mode: "capture" as const },
-  { id: 2, text: "Catch 3 messy ideas (no judging)", mode: "capture" as const },
-  { id: 3, text: "Do one phone-free walk, then catch what came up", mode: "walk" as const },
-  { id: 4, text: "Run Prompt on your favorite raw idea", mode: "scamper" as const },
-  { id: 5, text: "Decide: keep one, drop the rest", mode: "converge" as const },
+  { id: 1, text: "Catch 3 messy ideas (no judging)", mode: "capture" as const },
+  { id: 2, text: "Take one phone-free walk, then catch what came up", mode: "walk" as const },
+  { id: 3, text: "Use Prompt on your favorite raw idea", mode: "scamper" as const },
+  { id: 4, text: "Decide: keep one, drop the rest", mode: "converge" as const },
 ];

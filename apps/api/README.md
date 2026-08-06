@@ -1,25 +1,25 @@
 # @createvity/api
 
-Offchain backend for Creativity Boost.
+Offchain backend for Createvity.
 
 - **Ideas** (capture vault)
 - **Sessions** (diverge / converge / walk / scamper)
 - **Profile** (Klein success definition / 10-year dream)
 
-## Auth model (Privy)
+## Auth model (Google OAuth)
 
-1. Frontend: `@privy-io/react-auth` login (email / X / Google)
-2. Client sends: `Authorization: Bearer <privy_access_token>`
-3. API verifies token with `@privy-io/server-auth` using `PRIVY_APP_SECRET`
-4. Vault rows keyed by Privy user id (`did:privy:…`)
+1. Frontend: Google OAuth login through the Next.js app
+2. The app creates a signed session JWT using `AUTH_SECRET`
+3. Client sends: `Authorization: Bearer <session_jwt>`
+4. API verifies the JWT with the same `AUTH_SECRET`
+5. Vault rows are keyed by the Google user id (`google:<id>`)
 
 ```bash
 # apps/api/.env
-PRIVY_APP_ID=cmrriqmv8001i0cl13t8hrtuv
-PRIVY_APP_SECRET=   # from https://dashboard.privy.io/
+AUTH_SECRET=the-same-long-random-string-as-apps-web
 ```
 
-Without `PRIVY_APP_SECRET`, authenticated API calls return 503.
+Without `AUTH_SECRET`, authenticated API calls return 503.
 
 ## Run
 

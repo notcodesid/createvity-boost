@@ -14,6 +14,7 @@ import { CaptureBar } from "./capture-bar";
 import { ConvergePanel } from "./converge-panel";
 import { DivergePanel } from "./diverge-panel";
 import { IdeaList } from "./idea-list";
+import { ProtocolChecklist } from "./protocol-checklist";
 import { ScamperPanel } from "./scamper-panel";
 import { WalkPanel } from "./walk-panel";
 
@@ -91,6 +92,7 @@ export function StudioApp() {
           </main>
 
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            <ProtocolChecklist onGo={setMode} />
             <ActivityGraph />
           </aside>
         </div>

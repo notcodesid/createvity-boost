@@ -1,6 +1,6 @@
 # @createvity/web
 
-Next.js frontend for Creativity Boost.
+Next.js frontend for Createvity.
 
 ## Run
 
@@ -23,15 +23,18 @@ pnpm --filter @createvity/web dev
 
 ## Env
 
-See `.env.local`:
+Set `apps/web/.env.local`:
 
 ```
 NEXT_PUBLIC_API_URL=http://localhost:8787
-NEXT_PUBLIC_PRIVY_APP_ID=cmrriqmv8001i0cl13t8hrtuv
+AUTH_URL=http://localhost:3000
+AUTH_SECRET=generate-a-long-random-string
+GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your-google-client-secret
 ```
 
 ## Auth
 
-Privy sign-in gate → access token on all API calls.
+Google OAuth issues a session JWT that the client sends to the API in its `Authorization` header.
 
-In [Privy Dashboard](https://dashboard.privy.io/): allow `http://localhost:3000` and enable login methods (email, twitter, google) + embedded wallets.
+In Google Cloud Console, add `http://localhost:3000` as an authorized JavaScript origin and `http://localhost:3000/api/auth/callback/google` as an authorized redirect URI.

@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 import { serve } from "@hono/node-server";
 import { createApp } from "./app.js";
 import { migrate } from "./db.js";
-import { isPrivyConfigured } from "./privy.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 loadEnv({ path: resolve(__dirname, "../.env") });
@@ -18,9 +17,7 @@ async function main() {
   console.log(`createvity-api db: postgres (supabase)`);
   console.log(`createvity-api listening on http://localhost:${port}`);
   console.log(`health: http://localhost:${port}/health`);
-  console.log(
-    `privy secret: ${isPrivyConfigured() ? "configured" : "MISSING — set PRIVY_APP_SECRET"}`,
-  );
+  console.log(`auth: Google OAuth session JWT`);
 
   serve({
     fetch: app.fetch,

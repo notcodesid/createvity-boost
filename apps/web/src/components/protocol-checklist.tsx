@@ -1,6 +1,6 @@
 "use client";
 
-import { useIdeas, useProfile } from "@/hooks/use-ideas";
+import { useIdeas } from "@/hooks/use-ideas";
 import { FIRST_RUN } from "@/lib/research-content";
 import { CheckCircle2, Circle } from "lucide-react";
 
@@ -12,11 +12,9 @@ type Props = {
 
 export function ProtocolChecklist({ onGo }: Props) {
   const { data: ideasData } = useIdeas("all");
-  const { data: profileData } = useProfile();
 
   const ideas = ideasData?.ideas ?? [];
   const rawCount = ideas.filter((i) => i.status === "raw").length;
-  const hasSuccess = Boolean(profileData?.profile?.successDefinition?.trim());
   const hasWalk = ideas.some((i) => i.tags?.includes("walk"));
   const hasScamper = ideas.some(
     (i) => i.tags?.includes("scamper") || i.title.startsWith("SCAMPER:"),
@@ -25,7 +23,6 @@ export function ProtocolChecklist({ onGo }: Props) {
   const captureCount = ideas.length;
 
   const done = [
-    hasSuccess,
     captureCount >= 3,
     hasWalk,
     hasScamper,
@@ -37,13 +34,13 @@ export function ProtocolChecklist({ onGo }: Props) {
   return (
     <section className="space-y-3 py-1">
       <div className="mb-3 flex items-baseline justify-between gap-2">
-        <h2 className="font-semibold text-ink">First creative loop</h2>
+        <h2 className="font-semibold text-ink">Your first creative reset</h2>
         <span className="font-mono text-xs text-muted">
           {completed}/{FIRST_RUN.length}
         </span>
       </div>
       <p className="mb-4 text-sm text-muted">
-        Catch → Generate · Walk · Prompt → Decide. Run it once end-to-end.
+        Catch a few thoughts, unstick one, then choose what deserves your attention.
       </p>
       <ul className="space-y-2">
         {FIRST_RUN.map((step, i) => {

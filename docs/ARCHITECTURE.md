@@ -20,5 +20,5 @@ Single monorepo: `apps/web` + `apps/api` + `packages/*`.
 ## Backend
 
 - **Stack:** Hono + Postgres (Supabase) + Zod
-- **Auth:** Privy session token (Google / email / X) → `Authorization` header
+- **Auth:** Google OAuth session JWT → `Authorization` header
 - **Run:** `pnpm dev:api` → `http://localhost:8787`
