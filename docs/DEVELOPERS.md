@@ -83,7 +83,9 @@ GOOGLE_CLIENT_SECRET=your-google-client-secret
 PORT=8787
 CORS_ORIGIN=*
 AUTH_SECRET=same-as-web-AUTH_SECRET
-DATABASE_URL=postgresql://...   # Postgres (e.g. Supabase) — required
+# Prefer the Supabase Session pooler locally. Direct db.<project-ref>.supabase.co
+# hosts are IPv6-only and will fail on IPv4-only networks.
+DATABASE_URL=postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres
 ```
 
 **Google Cloud Console**

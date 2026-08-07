@@ -52,4 +52,7 @@ Default: `http://localhost:8787`
 ```bash
 PORT=8787
 CORS_ORIGIN=*
+# Use the Supabase Session pooler on local IPv4-only networks:
+# postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres
+DATABASE_URL=postgresql://...
 ```

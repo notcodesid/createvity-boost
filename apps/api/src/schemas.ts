@@ -6,6 +6,7 @@ export const createIdeaSchema = z.object({
   body: z.string().max(50_000).optional().default(""),
   tags: z.array(z.string().trim().min(1).max(64)).max(20).optional().default([]),
   status: z.enum(IDEA_STATUSES).optional().default("raw"),
+  nextAction: z.string().trim().min(1).max(1000).optional(),
 });
 
 export const updateIdeaSchema = z
@@ -14,6 +15,7 @@ export const updateIdeaSchema = z
     body: z.string().max(50_000).optional(),
     tags: z.array(z.string().trim().min(1).max(64)).max(20).optional(),
     status: z.enum(IDEA_STATUSES).optional(),
+    nextAction: z.string().trim().min(1).max(1000).nullable().optional(),
   })
   .refine((v) => Object.keys(v).length > 0, { message: "At least one field required" });
 

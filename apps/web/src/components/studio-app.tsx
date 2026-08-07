@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Compass,
   Footprints,
   Layers,
   Lightbulb,
@@ -11,14 +12,15 @@ import { useState } from "react";
 import { AuthGate } from "./auth-gate";
 import { ActivityGraph } from "./activity-graph";
 import { CaptureBar } from "./capture-bar";
+import { CreativeReset } from "./creative-reset";
 import { ConvergePanel } from "./converge-panel";
 import { DivergePanel } from "./diverge-panel";
 import { IdeaList } from "./idea-list";
-import { ProtocolChecklist } from "./protocol-checklist";
 import { ScamperPanel } from "./scamper-panel";
 import { WalkPanel } from "./walk-panel";
 
 const MODES = [
+  { id: "reset", label: "Reset", icon: Compass },
   { id: "capture", label: "Catch", icon: Lightbulb },
   { id: "diverge", label: "Generate", icon: Layers },
   { id: "walk", label: "Walk", icon: Footprints },
@@ -29,7 +31,7 @@ const MODES = [
 type Mode = (typeof MODES)[number]["id"];
 
 export function StudioApp() {
-  const [mode, setMode] = useState<Mode>("capture");
+  const [mode, setMode] = useState<Mode>("reset");
 
   return (
     <AuthGate>
@@ -70,6 +72,7 @@ export function StudioApp() {
 
         <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
           <main className="min-w-0 space-y-5">
+            {mode === "reset" ? <CreativeReset /> : null}
             {mode === "capture" ? (
               <>
                 <CaptureBar />
@@ -92,7 +95,6 @@ export function StudioApp() {
           </main>
 
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <ProtocolChecklist onGo={setMode} />
             <ActivityGraph />
           </aside>
         </div>

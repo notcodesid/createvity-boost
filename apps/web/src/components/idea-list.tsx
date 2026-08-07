@@ -114,6 +114,14 @@ export function IdeaList({
                   {idea.tags.map((t) => `#${t}`).join(" ")}
                 </p>
               ) : null}
+              {idea.nextAction ? (
+                <p className="mt-3 border-l-2 border-sage/60 pl-3 text-sm text-ink">
+                  <span className="mr-1 text-xs font-medium uppercase tracking-wide text-sage">
+                    Next
+                  </span>
+                  {idea.nextAction}
+                </p>
+              ) : null}
 
               {mode === "converge" ? (
                 <div

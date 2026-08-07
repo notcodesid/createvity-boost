@@ -30,7 +30,20 @@ async function request<T>(
     headers.set("Authorization", `Bearer ${token}`);
   }
 
-  const res = await fetch(`${API_URL}${path}`, { ...init, headers });
+  let res: Response;
+  try {
+    res = await fetch(`${API_URL}${path}`, { ...init, headers });
+  } catch (error) {
+    if (error instanceof TypeError) {
+      const isLocalApi = API_URL === "http://localhost:8787";
+      throw new Error(
+        isLocalApi
+          ? "Couldn’t reach the local API at http://localhost:8787. Run pnpm dev (or pnpm dev:api), then retry."
+          : "Couldn’t reach the Createvity API. Check that the API service is running, then retry.",
+      );
+    }
+    throw error;
+  }
   const data = (await res.json().catch(() => ({}))) as T & {
     error?: string;
     details?: unknown;

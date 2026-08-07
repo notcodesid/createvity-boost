@@ -3,7 +3,7 @@
 export const IDEA_STATUSES = ["raw", "keep", "kill"] as const;
 export type IdeaStatus = (typeof IDEA_STATUSES)[number];
 
-export const SESSION_TYPES = ["diverge", "converge", "walk", "scamper"] as const;
+export const SESSION_TYPES = ["reset", "diverge", "converge", "walk", "scamper"] as const;
 export type SessionType = (typeof SESSION_TYPES)[number];
 
 export interface Idea {
@@ -13,6 +13,8 @@ export interface Idea {
   body: string;
   status: IdeaStatus;
   tags: string[];
+  nextAction?: string | null;
+  nextActionUpdatedAt?: number | null;
   createdAt: number;
   updatedAt: number;
 }
@@ -53,6 +55,7 @@ export interface CreateIdeaInput {
   body?: string;
   tags?: string[];
   status?: IdeaStatus;
+  nextAction?: string;
 }
 
 export interface UpdateIdeaInput {
@@ -60,6 +63,7 @@ export interface UpdateIdeaInput {
   body?: string;
   tags?: string[];
   status?: IdeaStatus;
+  nextAction?: string | null;
 }
 
 export interface CreateSessionInput {

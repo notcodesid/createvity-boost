@@ -36,6 +36,9 @@ export function mapIdea(row: IdeaRow): Idea {
     body: row.body,
     status: row.status as Idea["status"],
     tags,
+    nextAction: row.next_action,
+    nextActionUpdatedAt:
+      row.next_action_updated_at == null ? null : num(row.next_action_updated_at),
     createdAt: num(row.created_at),
     updatedAt: num(row.updated_at),
   };

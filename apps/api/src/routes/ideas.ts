@@ -80,12 +80,23 @@ ideasRouter.post("/", async (c) => {
 
   const now = Date.now();
   const id = randomUUID();
-  const { title, body: ideaBody, tags, status } = parsed.data;
+  const { title, body: ideaBody, tags, status, nextAction } = parsed.data;
 
   await execute(
-    `INSERT INTO ideas (id, client_id, title, body, status, tags_json, created_at, updated_at)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
-    [id, clientId, title, ideaBody, status, JSON.stringify(tags), now, now],
+    `INSERT INTO ideas (id, client_id, title, body, status, tags_json, next_action, next_action_updated_at, created_at, updated_at)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+    [
+      id,
+      clientId,
+      title,
+      ideaBody,
+      status,
+      JSON.stringify(tags),
+      nextAction ?? null,
+      nextAction ? now : null,
+      now,
+      now,
+    ],
   );
 
   const row = await queryOne<IdeaRow>(`SELECT * FROM ideas WHERE id = $1`, [id]);
@@ -115,13 +126,35 @@ ideasRouter.patch("/:id", async (c) => {
       parsed.data.tags !== undefined
         ? JSON.stringify(parsed.data.tags)
         : existing.tags_json,
+    next_action:
+      parsed.data.nextAction !== undefined
+        ? parsed.data.nextAction
+        : existing.next_action,
+    next_action_updated_at:
+      parsed.data.nextAction !== undefined
+        ? parsed.data.nextAction
+          ? Date.now()
+          : null
+        : existing.next_action_updated_at,
     updated_at: Date.now(),
   };
 
   await execute(
-    `UPDATE ideas SET title = $1, body = $2, status = $3, tags_json = $4, updated_at = $5
-     WHERE id = $6 AND client_id = $7`,
-    [next.title, next.body, next.status, next.tags_json, next.updated_at, id, clientId],
+    `UPDATE ideas
+     SET title = $1, body = $2, status = $3, tags_json = $4, next_action = $5,
+       next_action_updated_at = $6, updated_at = $7
+     WHERE id = $8 AND client_id = $9`,
+    [
+      next.title,
+      next.body,
+      next.status,
+      next.tags_json,
+      next.next_action,
+      next.next_action_updated_at,
+      next.updated_at,
+      id,
+      clientId,
+    ],
   );
 
   const row = await queryOne<IdeaRow>(`SELECT * FROM ideas WHERE id = $1`, [id]);

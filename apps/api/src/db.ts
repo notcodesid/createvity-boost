@@ -73,6 +73,8 @@ export async function migrate() {
       body TEXT NOT NULL DEFAULT '',
       status TEXT NOT NULL DEFAULT 'raw',
       tags_json TEXT NOT NULL DEFAULT '[]',
+      next_action TEXT,
+      next_action_updated_at BIGINT,
       created_at BIGINT NOT NULL,
       updated_at BIGINT NOT NULL
     );
@@ -101,6 +103,9 @@ export async function migrate() {
       ten_year_dream TEXT,
       updated_at BIGINT NOT NULL
     );
+
+    ALTER TABLE ideas ADD COLUMN IF NOT EXISTS next_action TEXT;
+    ALTER TABLE ideas ADD COLUMN IF NOT EXISTS next_action_updated_at BIGINT;
   `);
 }
 
@@ -169,6 +174,8 @@ export type IdeaRow = {
   body: string;
   status: string;
   tags_json: string;
+  next_action: string | null;
+  next_action_updated_at: string | number | null;
   created_at: string | number;
   updated_at: string | number;
 };
